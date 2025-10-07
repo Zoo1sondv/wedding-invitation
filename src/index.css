@@ -3,11 +3,7 @@
 body {
   margin: 0;
   font-family: "EB Garamond", sans-serif !important;
-  background-image: linear-gradient(
-    to left,
-    rgb(255, 255, 255),
-    rgb(235, 208, 238)
-  );
+  background-image: linear-gradient(to left, #fff, #dbd9d5);
 }
 
 #root {
