@@ -1,69 +1,161 @@
-.section_1 {
+.home {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  position: relative;
+  gap: 100px;
 
-  &__image {
-    width: auto;
-    height: 100vh;
-    object-fit: cover;
-  }
-
-  &__content {
+  .section_1 {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    position: absolute;
-    bottom: 0;
-    opacity: 0;
-    transform: translateY(80px);
-    transition: all 1.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    position: relative;
 
-    &.show {
-      opacity: 1;
-      transform: translateY(0);
+    &__image {
+      width: auto;
+      height: 100vh;
+      object-fit: cover;
     }
 
-    & h1 {
-      font-size: 4rem;
-      font-weight: 600;
-      color: #fff;
-      font-family: "Great Vibes", cursive;
-      text-wrap: nowrap;
-      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-    }
+    &__content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      position: absolute;
+      bottom: 0;
+      opacity: 0;
+      transform: translateY(80px);
+      transition: all 1.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 
-    & p {
-      font-size: 1rem;
-      font-weight: 400;
-      color: #fff;
-      font-family: "Montserrat", cursive;
-      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-      margin-bottom: 1.5rem;
-      gap: 4;
-      text-align: center;
+      &.show {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      & h1 {
+        font-size: 4rem;
+        font-weight: 600;
+        color: #fff;
+        font-family: "Great Vibes", cursive;
+        text-wrap: nowrap;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+      }
+
+      & p {
+        font-size: 1.5rem;
+        font-weight: 400;
+        color: #fff;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        margin-bottom: 1.5rem;
+        margin-top: 1rem;
+        gap: 4;
+        text-align: center;
+      }
     }
   }
-}
 
-.section_2 {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-
-  &__image {
-    width: auto;
-    height: 100vh;
-    object-fit: cover;
-  }
-
-  &__content {
+  .section_2 {
     display: flex;
     flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    gap: 70px;
+
+    &__content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      text-align: center;
+      transform: translateY(80px);
+      transition: all 1.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+
+      &.show {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      &__divider {
+        border: 1px solid #6d6969;
+        height: 30px;
+        margin: 15px 0;
+      }
+
+      & h1 {
+        font-size: 1.3rem;
+        font-weight: 500;
+        color: #6d6656;
+        text-wrap: nowrap;
+      }
+
+      & h3 {
+        font-size: 1rem;
+        font-weight: 400;
+        color: #6d6656;
+      }
+    }
+
+    &__image {
+      display: flex;
+      flex-direction: row;
+      gap: 10px;
+      margin: 0 10px;
+
+      &__husband {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        flex: 1;
+
+        &__name {
+          font-size: 1.5rem;
+          font-weight: 500;
+          color: #6d6656;
+          text-align: center;
+
+          & p {
+            font-family: "Great Vibes", cursive;
+          }
+        }
+
+        &__image {
+          width: 100%;
+          object-fit: cover;
+          box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.5);
+          border-radius: 4px;
+        }
+      }
+
+      &__wife {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        flex: 1;
+
+        &__name {
+          font-size: 1.5rem;
+          font-weight: 500;
+          color: #6d6656;
+          text-align: center;
+
+          & p {
+            font-family: "Great Vibes", cursive;
+          }
+        }
+
+        &__image {
+          width: 100%;
+          object-fit: contain;
+          box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.5);
+          border-radius: 4px;
+        }
+      }
+    }
   }
 }

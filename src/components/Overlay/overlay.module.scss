@@ -14,8 +14,8 @@
     width: 50px;
     height: 50px;
     object-fit: cover;
-    margin-bottom: 10px;
-    margin-left: 10px;
+    margin-bottom: 15px;
+    margin-left: 15px;
     animation: rotate 10s linear infinite;
 
     &.stop {
@@ -39,8 +39,8 @@
     width: 50px;
     height: 50px;
     object-fit: cover;
-    margin-bottom: 10px;
-    margin-right: 10px;
+    margin-bottom: 15px;
+    margin-right: 15px;
     animation: up cubic-bezier(0.4, 0, 0.2, 1) 1s infinite;
     transition: all 0.3s ease-in-out;
 
