@@ -8,7 +8,11 @@ import EventCalendarSection from "./sections/EventCalendarSection";
 import LocationSection from "./sections/LocationSection";
 import AlbumPreviewSection from "./sections/AlbumPreviewSection";
 import AlbumSliderSection from "./sections/AlbumSliderSection";
+import VideoSection from "./sections/VideoSection";
 import ImageModal from "./sections/ImageModal";
+import ContactForm from "./sections/ContactForm";
+import CountdownSection from "./sections/CountdownSection";
+import ThankYouSection from "./sections/ThankYouSection";
 import style from "./home.module.scss";
 
 const Home = () => {
@@ -20,6 +24,10 @@ const Home = () => {
   const [calendarRef, showCalendar] = useScrollAnimation({ threshold: 0.3 });
   const [albumPreviewRef, showAlbumPreview] = useScrollAnimation({ threshold: 0.3 });
   const [albumSliderRef, showAlbumSlider] = useScrollAnimation({ threshold: 0.3 });
+  const [videoRef, showVideo] = useScrollAnimation({ threshold: 0.3 });
+  const [contactFormRef, showContactForm] = useScrollAnimation({ threshold: 0.3 });
+  const [countdownRef, showCountdown] = useScrollAnimation({ threshold: 0.3 });
+  const [thankYouRef, showThankYou] = useScrollAnimation({ threshold: 0.3 });
 
   // Album images
   const albumImages = [
@@ -142,6 +150,26 @@ const Home = () => {
         showSection={showAlbumSlider}
         albumImages={albumImages}
         onImageClick={handleImageClick}
+      />
+
+      <VideoSection
+        sectionRef={videoRef}
+        showSection={showVideo}
+      />
+
+      <ContactForm
+        sectionRef={contactFormRef}
+        showSection={showContactForm}
+      />
+
+      <CountdownSection
+        sectionRef={countdownRef}
+        showSection={showCountdown}
+      />
+
+      <ThankYouSection
+        sectionRef={thankYouRef}
+        showSection={showThankYou}
       />
 
       <ImageModal

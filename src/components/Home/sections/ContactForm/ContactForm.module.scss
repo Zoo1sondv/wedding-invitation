@@ -1,0 +1,492 @@
+@use "sass:color";
+
+// Variables
+$color-primary: #6d6656;
+$color-white: #fff;
+$color-success: #28a745;
+$color-error: #dc3545;
+$shadow-text: 2px 2px 4px rgba(0, 0, 0, 0.5);
+$shadow-box: 0 0 10px 0 rgba(0, 0, 0, 0.5);
+$border-radius: 8px;
+
+.contactForm {
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  padding: 80px 0;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+
+  &__content {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0 20px;
+    opacity: 0;
+    transform: translateY(50px);
+    transition: all 0.8s ease;
+
+    &.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  &__header {
+    text-align: center;
+    margin-bottom: 50px;
+
+    h2 {
+      font-size: 3rem;
+      color: $color-primary;
+      margin-bottom: 20px;
+      text-shadow: $shadow-text;
+      font-family: "Dancing Script", cursive;
+    }
+
+    p {
+      font-size: 1.2rem;
+      color: #666;
+      line-height: 1.6;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+  }
+
+  &__form {
+    background: $color-white;
+    padding: 40px;
+    border-radius: $border-radius;
+    box-shadow: $shadow-box;
+    backdrop-filter: blur(10px);
+  }
+
+  &__field {
+    margin-bottom: 30px;
+    width: 100%;
+  }
+
+  &__label {
+    display: block;
+    width: 100%;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: $color-primary;
+    margin-bottom: 8px;
+
+    // Đảm bảo label tag cũng full width
+    label {
+      width: 100%;
+      display: block;
+    }
+  }
+
+  &__input,
+  &__textarea {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 12px 16px;
+    border: 2px solid #e1e5e9;
+    border-radius: $border-radius;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    background: #f8f9fa;
+
+    &:focus {
+      outline: none;
+      border-color: $color-primary;
+      background: $color-white;
+      box-shadow: 0 0 0 3px rgba(109, 102, 86, 0.1);
+    }
+
+    &::placeholder {
+      color: #999;
+    }
+  }
+
+  &__textarea {
+    resize: vertical;
+    min-height: 100px;
+    font-family: inherit;
+  }
+
+  &__radioGroup {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  &__radio {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    padding: 12px 16px;
+    border: 2px solid #e1e5e9;
+    border-radius: $border-radius;
+    background: #f8f9fa;
+    transition: all 0.3s ease;
+
+    &:hover {
+      border-color: $color-primary;
+      background: rgba(109, 102, 86, 0.05);
+    }
+
+    input[type="radio"] {
+      margin-right: 12px;
+      width: 20px;
+      height: 20px;
+      accent-color: $color-primary;
+    }
+
+    input[type="radio"]:checked + &Text {
+      font-weight: 600;
+    }
+
+    &:has(input:checked) {
+      border-color: $color-primary;
+      background: rgba(109, 102, 86, 0.1);
+    }
+  }
+
+  &__radioText {
+    font-size: 1rem;
+    color: #333;
+  }
+
+  &__submit {
+    text-align: center;
+    margin-top: 40px;
+    margin-bottom: 15px;
+  }
+
+  &__giftButton {
+    text-align: center;
+    margin-bottom: 30px;
+  }
+
+  &__giftBtn {
+    background: linear-gradient(135deg, #d4af37 0%, #f4d03f 100%);
+    color: $color-white;
+    border: none;
+    padding: 16px 40px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    border-radius: $border-radius;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    min-width: 200px;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+
+    &:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(212, 175, 55, 0.4);
+      background: linear-gradient(135deg, #f4d03f 0%, #d4af37 100%);
+    }
+  }
+
+  &__button {
+    background: linear-gradient(
+      135deg,
+      $color-primary 0%,
+      color.adjust($color-primary, $lightness: -15%) 100%
+    );
+    color: $color-white;
+    border: none;
+    padding: 16px 40px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    border-radius: $border-radius;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    min-width: 200px;
+    justify-content: center;
+
+    &:hover:not(:disabled) {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(109, 102, 86, 0.3);
+    }
+
+    &:disabled {
+      opacity: 0.7;
+      cursor: not-allowed;
+    }
+
+    &.submitting {
+      background: #999;
+    }
+
+    &.success {
+      background: $color-success;
+    }
+
+    &.error {
+      background: $color-error;
+    }
+  }
+
+  &__success {
+    margin-top: 20px;
+    padding: 20px;
+    background: color.adjust($color-success, $lightness: 45%);
+    border: 2px solid $color-success;
+    border-radius: $border-radius;
+    text-align: center;
+
+    p {
+      color: color.adjust($color-success, $lightness: -20%);
+      font-weight: 600;
+      margin: 0;
+    }
+  }
+
+  .required {
+    color: $color-error;
+  }
+
+  .spinner {
+    width: 20px;
+    height: 20px;
+    border: 2px solid transparent;
+    border-top: 2px solid $color-white;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+  }
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+// Mobile responsive
+@media (max-width: 768px) {
+  .contactForm {
+    padding: 40px 0;
+
+    &__content {
+      padding: 0 15px;
+    }
+
+    &__header {
+      margin-bottom: 30px;
+
+      h2 {
+        font-size: 2.5rem;
+      }
+
+      p {
+        font-size: 1.1rem;
+      }
+    }
+
+    &__form {
+      padding: 30px 20px;
+    }
+
+    &__radioGroup {
+      gap: 8px;
+    }
+
+    &__radio {
+      padding: 10px 12px;
+
+      input[type="radio"] {
+        width: 18px;
+        height: 18px;
+      }
+    }
+
+    &__button {
+      width: 100%;
+      padding: 14px 20px;
+    }
+  }
+}
+
+// QR Modal Styles
+.qrModal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 20px;
+
+  &__content {
+    background: $color-white;
+    border-radius: $border-radius;
+    max-width: 600px;
+    width: 100%;
+    max-height: 90vh;
+    overflow-y: auto;
+    box-shadow: $shadow-box;
+    animation: modalSlideIn 0.3s ease;
+  }
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 30px;
+    border-bottom: 1px solid #eee;
+
+    h3 {
+      margin: 0;
+      color: $color-primary;
+      font-family: "Dancing Script", cursive;
+      font-size: 1.8rem;
+    }
+  }
+
+  &__close {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    color: #666;
+    cursor: pointer;
+    padding: 5px;
+    border-radius: 50%;
+    width: 35px;
+    height: 35px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+
+    &:hover {
+      background: #f5f5f5;
+      color: $color-primary;
+    }
+  }
+
+  &__body {
+    padding: 30px;
+  }
+
+  &__qrContainer {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    margin-bottom: 30px;
+  }
+
+  &__qrItem {
+    text-align: center;
+
+    h4 {
+      margin: 0 0 15px 0;
+      color: $color-primary;
+      font-size: 1.3rem;
+      font-family: "Dancing Script", cursive;
+    }
+
+    p {
+      margin: 15px 0 0 0;
+      color: #666;
+      font-size: 0.9rem;
+    }
+  }
+
+  &__qrImage {
+    width: 200px;
+    height: 200px;
+    border: 2px solid #eee;
+    border-radius: $border-radius;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+
+    &:hover {
+      transform: scale(1.05);
+    }
+  }
+
+  &__note {
+    text-align: center;
+    padding: 20px;
+    background: color.adjust($color-primary, $lightness: 45%);
+    border-radius: $border-radius;
+
+    p {
+      margin: 0;
+      color: $color-white;
+      font-size: 1.1rem;
+      font-weight: 500;
+    }
+  }
+}
+
+@keyframes modalSlideIn {
+  from {
+    opacity: 0;
+    transform: scale(0.8) translateY(-50px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+@media (max-width: 480px) {
+  .contactForm {
+    &__header h2 {
+      font-size: 2rem;
+    }
+
+    &__form {
+      padding: 20px 15px;
+    }
+
+    &__field {
+      margin-bottom: 20px;
+    }
+  }
+
+  .qrModal {
+    padding: 10px;
+
+    &__content {
+      max-height: 95vh;
+    }
+
+    &__header {
+      padding: 15px 20px;
+
+      h3 {
+        font-size: 1.5rem;
+      }
+    }
+
+    &__body {
+      padding: 20px;
+    }
+
+    &__qrContainer {
+      grid-template-columns: 1fr;
+      gap: 25px;
+      margin-bottom: 25px;
+    }
+
+    &__qrImage {
+      width: 180px;
+      height: 180px;
+    }
+
+    &__note {
+      padding: 15px;
+
+      p {
+        font-size: 1rem;
+      }
+    }
+  }
+}

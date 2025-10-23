@@ -6,3 +6,4 @@ export { default as LocationSection } from './LocationSection';
 export { default as AlbumPreviewSection } from './AlbumPreviewSection';
 export { default as AlbumSliderSection } from './AlbumSliderSection';
 export { default as ImageModal } from './ImageModal';
+export { default as ContactForm } from './ContactForm';

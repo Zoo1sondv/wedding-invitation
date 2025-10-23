@@ -1,0 +1,243 @@
+@use "sass:color";
+
+// Variables
+$color-primary: #6d6656;
+$color-white: #fff;
+$shadow-text: 2px 2px 4px rgba(0, 0, 0, 0.5);
+$shadow-box: 0 0 20px 0 rgba(0, 0, 0, 0.1);
+$border-radius: 12px;
+
+.videoSection {
+  background: linear-gradient(
+    135deg,
+    color.adjust($color-primary, $lightness: 15%) 0%,
+    color.adjust($color-primary, $lightness: -10%) 100%
+  );
+  padding: 80px 0;
+  min-height: 80vh;
+  display: flex;
+  align-items: center;
+  position: relative;
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(109, 102, 86, 0.2);
+  }
+
+  &__container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    position: relative;
+    z-index: 2;
+  }
+
+  &__content {
+    text-align: center;
+    opacity: 0;
+    transform: translateY(50px);
+    transition: all 0.8s ease;
+
+    &.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  &__header {
+    margin-bottom: 50px;
+
+    h2 {
+      font-size: 3.5rem;
+      color: $color-white;
+      margin-bottom: 20px;
+      text-shadow: $shadow-text;
+      font-family: "Dancing Script", cursive;
+      font-weight: 700;
+    }
+
+    p {
+      font-size: 1.3rem;
+      color: rgba(255, 255, 255, 0.9);
+      line-height: 1.6;
+      max-width: 700px;
+      margin: 0 auto;
+      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+    }
+  }
+
+  &__videoContainer {
+    margin-bottom: 40px;
+    display: flex;
+    justify-content: center;
+  }
+
+  &__videoWrapper {
+    position: relative;
+    width: 100%;
+    max-width: 800px;
+    height: 0;
+    padding-bottom: 56.25%; // 16:9 aspect ratio
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: $border-radius;
+    overflow: hidden;
+    box-shadow: $shadow-box;
+    transition:
+      transform 0.3s ease,
+      box-shadow 0.3s ease;
+
+    &:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+    }
+  }
+
+  &__iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: $border-radius;
+  }
+
+  &__description {
+    max-width: 600px;
+    margin: 0 auto;
+
+    p {
+      font-size: 1.2rem;
+      color: rgba(255, 255, 255, 0.95);
+      line-height: 1.8;
+      margin-bottom: 30px;
+      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+    }
+  }
+
+  &__cta {
+    display: flex;
+    justify-content: center;
+  }
+
+  &__ytButton {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: linear-gradient(135deg, #ff0000, #cc0000);
+    color: $color-white;
+    text-decoration: none;
+    padding: 15px 30px;
+    border-radius: 50px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    box-shadow: 0 5px 20px rgba(255, 0, 0, 0.3);
+    transition: all 0.3s ease;
+    text-shadow: none;
+
+    &:hover {
+      background: linear-gradient(135deg, #cc0000, #990000);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(255, 0, 0, 0.4);
+      text-decoration: none;
+      color: $color-white;
+    }
+
+    &:active {
+      transform: translateY(0);
+    }
+  }
+
+  // Show animation
+  &.show {
+    .videoSection__content {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}
+
+// Responsive Design
+@media (max-width: 1024px) {
+  .videoSection {
+    padding: 60px 0;
+
+    &__header h2 {
+      font-size: 3rem;
+    }
+
+    &__videoWrapper {
+      max-width: 700px;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .videoSection {
+    padding: 50px 0;
+    min-height: 70vh;
+
+    &__container {
+      padding: 0 15px;
+    }
+
+    &__header {
+      margin-bottom: 40px;
+
+      h2 {
+        font-size: 2.5rem;
+      }
+
+      p {
+        font-size: 1.1rem;
+      }
+    }
+
+    &__videoWrapper {
+      max-width: 100%;
+    }
+
+    &__description p {
+      font-size: 1.1rem;
+    }
+
+    &__ytButton {
+      padding: 12px 25px;
+      font-size: 1rem;
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .videoSection {
+    padding: 40px 0;
+
+    &__header {
+      margin-bottom: 30px;
+
+      h2 {
+        font-size: 2rem;
+      }
+
+      p {
+        font-size: 1rem;
+      }
+    }
+
+    &__description {
+      p {
+        font-size: 1rem;
+        margin-bottom: 25px;
+      }
+    }
+
+    &__ytButton {
+      padding: 10px 20px;
+      font-size: 0.9rem;
+    }
+  }
+}
