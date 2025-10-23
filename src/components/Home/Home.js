@@ -16,7 +16,7 @@ const Home = () => {
   // Album slider state
   const albumImages = [
     getAssetUrl("/assets/img/0F9A0090.jpg"),
-    getAssetUrl("/assets/img/0F9A0112.JPG"),
+    getAssetUrl("/assets/img/0F9A0112.jpg"),
     getAssetUrl("/assets/img/0F9A0175.jpg"),
     getAssetUrl("/assets/img/0F9A0290.jpg"),
     getAssetUrl("/assets/img/0F9A0386.jpg"),
@@ -125,9 +125,9 @@ const Home = () => {
       {/* Hero Section */}
       <section id="home" ref={section1Ref}>
         <div className={style.section_1}>
-          <image
+          <img
             className={style.section_1__image}
-            src={getAssetUrl("/assets/img/0F9A1826.JPG")}
+            src={getAssetUrl("/assets/img/0F9A1826.jpg")}
             alt="Wedding couple"
             loading="eager"
           />
@@ -177,9 +177,9 @@ const Home = () => {
                 <p>Chú Rể</p>
                 ĐOÀN SƠN
               </div>
-              <image
+              <img
                 className={style.person__image}
-                src={getAssetUrl("/assets/img/0F9A0024.JPG")}
+                src={getAssetUrl("/assets/img/0F9A0024.jpg")}
                 alt="Groom"
                 loading="lazy"
               />
@@ -191,9 +191,9 @@ const Home = () => {
                 [style.show]: showSection2,
               })}
             >
-              <image
+              <img
                 className={style.person__image}
-                src={getAssetUrl("/assets/img/0F9A0704.JPG")}
+                src={getAssetUrl("/assets/img/0F9A0704.jpg")}
                 alt="Bride"
                 loading="lazy"
               />
@@ -381,7 +381,7 @@ const Home = () => {
               })}
             >
               <img
-                src={getAssetUrl("/assets/img/0F9A1130.JPG")}
+                src={getAssetUrl("/assets/img/0F9A1130.jpg")}
                 alt="Wedding couple"
                 loading="lazy"
               />
