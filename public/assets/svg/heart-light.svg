@@ -1,0 +1,17 @@
+<svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path
+        d="M24 42.7l-2.9-2.63C10.8 30.72 4 24.55 4 17 4 11.48 8.48 7 14 7c3.04 0 5.95 1.48 7.78 3.96h4.44C28.05 8.48 30.96 7 34 7c5.52 0 10 4.48 10 10 0 7.55-6.8 13.72-17.1 23.07L24 42.7z"
+        fill="#FFB6C1" />
+    <defs>
+        <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+            <feGaussianBlur stdDeviation="3" result="coloredBlur" />
+            <feMerge>
+                <feMergeNode in="coloredBlur" />
+                <feMergeNode in="SourceGraphic" />
+            </feMerge>
+        </filter>
+    </defs>
+    <path
+        d="M24 42.7l-2.9-2.63C10.8 30.72 4 24.55 4 17 4 11.48 8.48 7 14 7c3.04 0 5.95 1.48 7.78 3.96h4.44C28.05 8.48 30.96 7 34 7c5.52 0 10 4.48 10 10 0 7.55-6.8 13.72-17.1 23.07L24 42.7z"
+        fill="#FFB6C1" filter="url(#glow)" />
+</svg>

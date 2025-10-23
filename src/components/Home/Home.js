@@ -262,11 +262,20 @@ const Home = () => {
               <div>7</div>
               <div>8</div>
               <div className={style.intimate_party_day}>
-                9<div className={style.heart}>♥</div>
+                9
+                <img 
+                  className={style.heart} 
+                  src={getAssetUrl("/assets/svg/heart-light.svg")} 
+                  alt="heart" 
+                />
               </div>
               <div className={style.wedding_day}>
                 10
-                <div className={style.heart}>♥</div>
+                <img 
+                  className={style.heart} 
+                  src={getAssetUrl("/assets/svg/heart-deep.svg")} 
+                  alt="heart" 
+                />
               </div>
               <div>11</div>
               <div>12</div>
@@ -292,11 +301,19 @@ const Home = () => {
 
             <div className={style.calendar_legend}>
               <div className={style.legend_item}>
-                <span className={style.legend_heart_light}>♥</span>
+                <img 
+                  className={style.legend_heart_light} 
+                  src={getAssetUrl("/assets/svg/heart-light.svg")} 
+                  alt="heart" 
+                />
                 <span>Ngày 9/11 - Tiệc Thân Mật</span>
               </div>
               <div className={style.legend_item}>
-                <span className={style.legend_heart_deep}>♥</span>
+                <img 
+                  className={style.legend_heart_deep} 
+                  src={getAssetUrl("/assets/svg/heart-deep.svg")} 
+                  alt="heart" 
+                />
                 <span>Ngày 10/11 - Lễ Vu Quy và Lễ Thành Hôn</span>
               </div>
             </div>

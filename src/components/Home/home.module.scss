@@ -392,21 +392,15 @@ $transition-smooth: all 1.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 
         .heart {
           position: absolute;
-          bottom: -34px;
+          bottom: -40px;
           z-index: -1;
           left: 50%;
           transform: translateX(-50%);
-          color: #ffb6c1;
-          font-size: 4.5rem;
+          width: 48px;
+          height: 48px;
           animation: heartbeat 1.5s ease-in-out infinite;
-          // Fallback cho Safari/iPhone
-          text-shadow:
-            0 0 8px rgba(255, 182, 193, 0.9),
-            0 0 16px rgba(255, 182, 193, 0.7),
-            0 0 24px rgba(255, 182, 193, 0.5);
-          // Modern browsers
+          // SVG sẽ có màu được định nghĩa trong file, không cần color
           filter: drop-shadow(0 0 8px rgba(255, 182, 193, 0.9));
-          // Webkit specific
           -webkit-filter: drop-shadow(0 0 8px rgba(255, 182, 193, 0.9));
         }
       }
@@ -419,21 +413,15 @@ $transition-smooth: all 1.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 
         .heart {
           position: absolute;
-          bottom: -34px;
+          bottom: -40px;
           z-index: -1;
           left: 50%;
           transform: translateX(-50%);
-          color: #ff69b4;
-          font-size: 4.5rem;
+          width: 48px;
+          height: 48px;
           animation: heartbeat 1.5s ease-in-out infinite;
-          // Fallback cho Safari/iPhone
-          text-shadow:
-            0 0 8px rgba(255, 105, 180, 0.8),
-            0 0 16px rgba(255, 105, 180, 0.6),
-            0 0 24px rgba(255, 105, 180, 0.4);
-          // Modern browsers
+          // SVG sẽ có màu được định nghĩa trong file, không cần color
           filter: drop-shadow(0 0 8px rgba(255, 105, 180, 0.8));
-          // Webkit specific
           -webkit-filter: drop-shadow(0 0 8px rgba(255, 105, 180, 0.8));
         }
       }
@@ -454,34 +442,20 @@ $transition-smooth: all 1.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
         color: $color-white;
         font-size: 1rem;
         text-shadow: $shadow-text;
-
-        span:first-child {
-          font-size: 2rem;
-        }
       }
 
-      .legend_heart_light {
-        color: #ffb6c1;
-        // Fallback cho Safari/iPhone
-        text-shadow:
-          0 0 4px rgba(255, 182, 193, 0.9),
-          0 0 8px rgba(255, 182, 193, 0.7);
-        // Modern browsers
+      .legend_heart_light,
+      .legend_heart_deep {
+        width: 24px;
+        height: 24px;
+        // SVG sẽ có màu được định nghĩa trong file
         filter: drop-shadow(0 0 4px rgba(255, 182, 193, 0.9));
-        // Webkit specific
         -webkit-filter: drop-shadow(0 0 4px rgba(255, 182, 193, 0.9));
       }
 
       .legend_heart_deep {
-        color: #ff69b4;
-        // Fallback cho Safari/iPhone
-        text-shadow:
-          0 0 4px rgba(255, 120, 192, 0.9),
-          0 0 8px rgba(255, 120, 192, 0.7);
-        // Modern browsers
-        filter: drop-shadow(0 0 4px rgba(255, 120, 192, 0.9));
-        // Webkit specific
-        -webkit-filter: drop-shadow(0 0 4px rgba(255, 120, 192, 0.9));
+        filter: drop-shadow(0 0 4px rgba(255, 105, 180, 0.8));
+        -webkit-filter: drop-shadow(0 0 4px rgba(255, 105, 180, 0.8));
       }
     }
   }
@@ -771,159 +745,89 @@ $transition-smooth: all 1.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     }
   }
 
-  // CSS specific cho Safari/iPhone để fix vấn đề hiển thị trái tim
-  @supports (-webkit-touch-callout: none) {
+  // Responsive Design for Mobile
+  @media (max-width: 768px) {
+    .section_1 {
+      &__content {
+        h1 {
+          font-size: 2.5rem; // Giảm size title trên mobile
+        }
+        p {
+          font-size: 1.2rem; // Giảm size text trên mobile
+        }
+      }
+    }
+
     .section_5 {
+      .calendar_month {
+        font-size: 2.5rem; // Giảm size title calendar trên mobile
+      }
+
       .calendar_grid {
-        .intimate_party_day .heart,
+        gap: 4px; // Giảm gap giữa các ô calendar
+
+        div {
+          font-size: 0.9rem; // Giảm size số trong calendar
+        }
+
+        .intimate_party_day,
+        .wedding_day {
+          font-size: 1rem; // Giảm size số đặc biệt
+
+          .heart {
+            font-size: 2.5rem; // Giảm size trái tim từ 4.5rem xuống 2.5rem
+            bottom: -20px; // Điều chỉnh vị trí cho phù hợp với size mới
+            filter: drop-shadow(0 0 4px rgba(255, 182, 193, 0.9));
+          }
+        }
+
         .wedding_day .heart {
-          // Force hardware acceleration trên iOS
-          -webkit-transform: translateX(-50%) translateZ(0);
-          transform: translateX(-50%) translateZ(0);
-          // Tăng cường text-shadow cho iOS
-          text-shadow:
-            0 0 10px currentColor,
-            0 0 20px currentColor,
-            0 0 30px currentColor,
-            2px 2px 4px rgba(0, 0, 0, 0.3);
-          // Đảm bảo font rendering tốt trên iOS
-          -webkit-font-smoothing: antialiased;
-          -moz-osx-font-smoothing: grayscale;
+          filter: drop-shadow(0 0 4px rgba(255, 105, 180, 0.8));
         }
       }
 
       .calendar_legend {
-        .legend_heart_light,
-        .legend_heart_deep {
-          // Tương tự cho legend
-          text-shadow:
-            0 0 6px currentColor,
-            0 0 12px currentColor,
-            2px 2px 4px rgba(0, 0, 0, 0.2);
-          -webkit-font-smoothing: antialiased;
-          -moz-osx-font-smoothing: grayscale;
+        margin-top: 30px;
+        padding: 8px 16px;
+
+        .legend_item {
+          font-size: 0.9rem;
+
+          span:first-child {
+            font-size: 1.5rem; // Giảm size trái tim trong legend
+          }
         }
       }
     }
-  }
-} // Responsive Design for Mobile
-@media (max-width: 768px) {
-  .section_1 {
-    &__content {
-      h1 {
-        font-size: 2.5rem; // Giảm size title trên mobile
+
+    .section_7 {
+      &__title {
+        font-size: 2rem; // Giảm size title album
       }
-      p {
-        font-size: 1.2rem; // Giảm size text trên mobile
+
+      &__main_image {
+        height: 50vh; // Giảm height ảnh chính trên mobile
       }
     }
   }
 
-  .section_5 {
-    .calendar_month {
-      font-size: 2.5rem; // Giảm size title calendar trên mobile
-    }
-
-    .calendar_grid {
-      gap: 4px; // Giảm gap giữa các ô calendar
-
-      div {
-        font-size: 0.9rem; // Giảm size số trong calendar
+  // Responsive cho màn hình rất nhỏ (< 480px)
+  @media (max-width: 480px) {
+    .section_5 {
+      .calendar_month {
+        font-size: 2rem;
       }
 
-      .intimate_party_day,
-      .wedding_day {
-        font-size: 1rem; // Giảm size số đặc biệt
+      .calendar_grid {
+        gap: 2px;
 
-        .heart {
-          font-size: 2.5rem; // Giảm size trái tim từ 4.5rem xuống 2.5rem
-          bottom: -20px; // Điều chỉnh vị trí cho phù hợp với size mới
-          filter: drop-shadow(0 0 4px rgba(255, 182, 193, 0.9));
+        .intimate_party_day,
+        .wedding_day {
+          .heart {
+            font-size: 2rem; // Size nhỏ hơn nữa cho màn hình very small
+            bottom: -16px;
+          }
         }
-      }
-
-      .wedding_day .heart {
-        filter: drop-shadow(0 0 4px rgba(255, 105, 180, 0.8));
-      }
-    }
-
-    .calendar_legend {
-      margin-top: 30px;
-      padding: 8px 16px;
-
-      .legend_item {
-        font-size: 0.9rem;
-
-        span:first-child {
-          font-size: 1.5rem; // Giảm size trái tim trong legend
-        }
-      }
-    }
-  }
-
-  .section_7 {
-    &__title {
-      font-size: 2rem; // Giảm size title album
-    }
-
-    &__main_image {
-      height: 50vh; // Giảm height ảnh chính trên mobile
-    }
-  }
-}
-
-// Responsive cho màn hình rất nhỏ (< 480px)
-@media (max-width: 480px) {
-  .section_5 {
-    .calendar_month {
-      font-size: 2rem;
-    }
-
-    .calendar_grid {
-      gap: 2px;
-
-      .intimate_party_day,
-      .wedding_day {
-        .heart {
-          font-size: 2rem; // Size nhỏ hơn nữa cho màn hình very small
-          bottom: -16px;
-        }
-      }
-    }
-  }
-}
-
-// CSS specific cho Safari/iPhone để fix vấn đề hiển thị trái tim
-@supports (-webkit-touch-callout: none) {
-  .section_5 {
-    .calendar_grid {
-      .intimate_party_day .heart,
-      .wedding_day .heart {
-        // Force hardware acceleration trên iOS
-        -webkit-transform: translateX(-50%) translateZ(0);
-        transform: translateX(-50%) translateZ(0);
-        // Tăng cường text-shadow cho iOS
-        text-shadow:
-          0 0 10px currentColor,
-          0 0 20px currentColor,
-          0 0 30px currentColor,
-          2px 2px 4px rgba(0, 0, 0, 0.3);
-        // Đảm bảo font rendering tốt trên iOS
-        -webkit-font-smoothing: antialiased;
-        -moz-osx-font-smoothing: grayscale;
-      }
-    }
-
-    .calendar_legend {
-      .legend_heart_light,
-      .legend_heart_deep {
-        // Tương tự cho legend
-        text-shadow:
-          0 0 6px currentColor,
-          0 0 12px currentColor,
-          2px 2px 4px rgba(0, 0, 0, 0.2);
-        -webkit-font-smoothing: antialiased;
-        -moz-osx-font-smoothing: grayscale;
       }
     }
   }
