@@ -17,7 +17,7 @@ const Home = () => {
   const albumImages = [
     getAssetUrl("/assets/img/0F9A0090.jpg"),
     getAssetUrl("/assets/img/0F9A0112.jpg"),
-    getAssetUrl("/assets/img/0F9A0175.jpg"),
+    getAssetUrl("/assets/img/0F9A0176.jpg"),
     getAssetUrl("/assets/img/0F9A0290.jpg"),
     getAssetUrl("/assets/img/0F9A0386.jpg"),
     getAssetUrl("/assets/img/0F9A0430.jpg"),
