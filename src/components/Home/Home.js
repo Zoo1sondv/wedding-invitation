@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import style from "./home.module.scss";
 import clsx from "clsx";
 import useScrollAnimation from "../../hooks/useScrollAnimation";
+import { getAssetUrl } from "../../utils/config";
 
 const Home = () => {
   const [section1Ref, showSection1] = useScrollAnimation({ threshold: 0.3 });
@@ -14,32 +15,32 @@ const Home = () => {
 
   // Album slider state
   const albumImages = [
-    "/assets/img/0F9A0090.jpg",
-    "/assets/img/0F9A0112.JPG",
-    "/assets/img/0F9A0175.jpg",
-    "/assets/img/0F9A0290.jpg",
-    "/assets/img/0F9A0386.jpg",
-    "/assets/img/0F9A0430.jpg",
-    "/assets/img/0F9A0469.jpg",
-    "/assets/img/0F9A0530.jpg",
-    "/assets/img/0F9A0567.jpg",
-    "/assets/img/0F9A0625.jpg",
-    "/assets/img/0F9A0754.jpg",
-    "/assets/img/0F9A0785.jpg",
-    "/assets/img/0F9A0867.jpg",
-    "/assets/img/0F9A0912.jpg",
-    "/assets/img/0F9A1373.jpg",
-    "/assets/img/0F9A1614.jpg",
-    "/assets/img/0F9A6199.jpg",
-    "/assets/img/0F9A6237.jpg",
-    "/assets/img/0F9A6267.jpg",
-    "/assets/img/0F9A6312.jpg",
-    "/assets/img/0F9A6359.jpg",
-    "/assets/img/0F9A6366.jpg",
-    "/assets/img/0F9A6438.jpg",
-    "/assets/img/0F9A6634.jpg",
-    "/assets/img/0F9A6676.jpg",
-    "/assets/img/0F9A6688.jpg",
+    getAssetUrl("/assets/img/0F9A0090.jpg"),
+    getAssetUrl("/assets/img/0F9A0112.JPG"),
+    getAssetUrl("/assets/img/0F9A0175.jpg"),
+    getAssetUrl("/assets/img/0F9A0290.jpg"),
+    getAssetUrl("/assets/img/0F9A0386.jpg"),
+    getAssetUrl("/assets/img/0F9A0430.jpg"),
+    getAssetUrl("/assets/img/0F9A0469.jpg"),
+    getAssetUrl("/assets/img/0F9A0530.jpg"),
+    getAssetUrl("/assets/img/0F9A0567.jpg"),
+    getAssetUrl("/assets/img/0F9A0625.jpg"),
+    getAssetUrl("/assets/img/0F9A0754.jpg"),
+    getAssetUrl("/assets/img/0F9A0785.jpg"),
+    getAssetUrl("/assets/img/0F9A0867.jpg"),
+    getAssetUrl("/assets/img/0F9A0912.jpg"),
+    getAssetUrl("/assets/img/0F9A1373.jpg"),
+    getAssetUrl("/assets/img/0F9A1614.jpg"),
+    getAssetUrl("/assets/img/0F9A6199.jpg"),
+    getAssetUrl("/assets/img/0F9A6237.jpg"),
+    getAssetUrl("/assets/img/0F9A6267.jpg"),
+    getAssetUrl("/assets/img/0F9A6312.jpg"),
+    getAssetUrl("/assets/img/0F9A6359.jpg"),
+    getAssetUrl("/assets/img/0F9A6366.jpg"),
+    getAssetUrl("/assets/img/0F9A6438.jpg"),
+    getAssetUrl("/assets/img/0F9A6634.jpg"),
+    getAssetUrl("/assets/img/0F9A6676.jpg"),
+    getAssetUrl("/assets/img/0F9A6688.jpg"),
   ];
 
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
@@ -126,7 +127,7 @@ const Home = () => {
         <div className={style.section_1}>
           <img
             className={style.section_1__image}
-            src="/assets/img/0F9A1826.JPG"
+            src={getAssetUrl("/assets/img/0F9A1826.JPG")}
             alt="Wedding couple"
             loading="eager"
           />
@@ -178,7 +179,7 @@ const Home = () => {
               </div>
               <img
                 className={style.person__image}
-                src="/assets/img/0F9A0024.JPG"
+                src={getAssetUrl("/assets/img/0F9A0024.JPG")}
                 alt="Groom"
                 loading="lazy"
               />
@@ -192,7 +193,7 @@ const Home = () => {
             >
               <img
                 className={style.person__image}
-                src="/assets/img/0F9A0704.JPG"
+                src={getAssetUrl("/assets/img/0F9A0704.JPG")}
                 alt="Bride"
                 loading="lazy"
               />
@@ -226,7 +227,7 @@ const Home = () => {
         <div
           className={style.section_5}
           style={{
-            backgroundImage: `url(${process.env.PUBLIC_URL}/assets/img/0F9A6398.jpg)`,
+            backgroundImage: `url(${getAssetUrl("/assets/img/0F9A6398.jpg")})`,
           }}
         >
           <div
@@ -335,7 +336,7 @@ const Home = () => {
               </div>
             </div>
             <img
-              src="/assets/gif/loading.gif"
+              src={getAssetUrl("/assets/gif/loading.gif")}
               alt="logo"
               className={style.section_4__logo}
             />
@@ -380,7 +381,7 @@ const Home = () => {
               })}
             >
               <img
-                src="/assets/img/0F9A1130.JPG"
+                src={getAssetUrl("/assets/img/0F9A1130.JPG")}
                 alt="Wedding couple"
                 loading="lazy"
               />

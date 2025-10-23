@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import style from "./overlay.module.scss";
 import clsx from "clsx";
+import { getAssetUrl } from "../../utils/config";
 
 const Overlay = () => {
   const [music, setMusic] = useState(true);
@@ -62,9 +63,9 @@ const Overlay = () => {
   return (
     <div className={style.overlay}>
       <div className={style.overlay__music} onClick={toggleMusic}>
-        <audio ref={audioRef} src="/assets/audio/wedding-music.mp3" loop />
+        <audio ref={audioRef} src={getAssetUrl("/assets/audio/wedding-music.mp3")} loop />
         <img
-          src="/assets/svg/music.svg"
+          src={getAssetUrl("/assets/svg/music.svg")}
           alt="music"
           className={clsx({
             [style.stop]: !music,
@@ -73,7 +74,7 @@ const Overlay = () => {
       </div>
       <div className={style.overlay__scroll_top}>
         <img
-          src="/assets/svg/scroll-top.svg"
+          src={getAssetUrl("/assets/svg/scroll-top.svg")}
           alt="scroll-top"
           onClick={scrollToTop}
         />
