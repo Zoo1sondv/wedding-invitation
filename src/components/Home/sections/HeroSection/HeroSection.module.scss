@@ -1,0 +1,59 @@
+// Variables
+$color-primary: #6d6656;
+$color-white: #fff;
+$shadow-text: 2px 2px 4px rgba(0, 0, 0, 0.5);
+$transition-smooth: all 1.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+
+// Mixins
+@mixin slide-up-animation {
+  opacity: 0;
+  transform: translateY(80px);
+  transition: $transition-smooth;
+
+  &.show {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.hero {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+
+  &__image {
+    width: auto;
+    height: 100vh;
+    object-fit: cover;
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    bottom: 0;
+    @include slide-up-animation;
+
+    h1 {
+      font-size: 4rem;
+      font-weight: 600;
+      color: $color-white;
+      font-family: "Great Vibes", cursive;
+      text-wrap: nowrap;
+      text-shadow: $shadow-text;
+    }
+
+    p {
+      font-size: 1.5rem;
+      font-weight: 400;
+      color: $color-white;
+      text-shadow: $shadow-text;
+      margin: 1rem 0 1.5rem;
+      text-align: center;
+    }
+  }
+}

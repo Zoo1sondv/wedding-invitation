@@ -1,0 +1,112 @@
+// Variables
+$color-primary: #6d6656;
+$color-white: #fff;
+$shadow-box: 0 0 10px 0 rgba(0, 0, 0, 0.5);
+$border-radius: 4px;
+$transition-smooth: all 1.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+
+// Mixins
+@mixin slide-up-animation {
+  opacity: 0;
+  transform: translateY(80px);
+  transition: $transition-smooth;
+
+  &.show {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@mixin slide-horizontal-animation($direction) {
+  opacity: 0;
+  transform: translateX($direction);
+  transition: $transition-smooth;
+
+  &.show {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@mixin image-style {
+  width: 100%;
+  object-fit: cover;
+  box-shadow: $shadow-box;
+  border-radius: $border-radius;
+}
+
+.invitation {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 45px;
+  gap: 40px;
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    @include slide-up-animation;
+
+    &__divider {
+      border: 1px solid #6d6969;
+      height: 30px;
+      margin: 15px 0;
+    }
+
+    h1 {
+      font-size: 1.5rem;
+      font-weight: 500;
+      color: $color-primary;
+      text-wrap: nowrap;
+    }
+
+    h3 {
+      font-size: 1rem;
+      font-weight: 400;
+      color: $color-primary;
+    }
+  }
+
+  &__images {
+    display: flex;
+    gap: 10px;
+    margin: 0 10px;
+  }
+}
+
+// Person Card (Groom & Bride)
+.person {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  flex: 1;
+
+  &__name {
+    font-size: 1.5rem;
+    font-weight: 500;
+    color: $color-primary;
+    text-align: center;
+
+    p {
+      font-family: "Great Vibes", cursive;
+    }
+  }
+
+  &__image {
+    @include image-style;
+  }
+
+  &__groom {
+    @include slide-horizontal-animation(80px);
+  }
+
+  &__bride {
+    @include slide-horizontal-animation(-80px);
+  }
+}
