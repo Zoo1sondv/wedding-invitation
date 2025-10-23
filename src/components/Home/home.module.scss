@@ -204,7 +204,6 @@ $transition-smooth: all 1.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     align-items: center;
     justify-content: center;
     margin: 50px 25px;
-    background-color: rgba(0, 0, 0, 0.5);
     border-radius: 8px;
 
     &__content {
@@ -254,6 +253,8 @@ $transition-smooth: all 1.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
           font-size: 1rem;
           font-weight: 400;
           cursor: pointer;
+          color: $color-white;
+          text-decoration: none;
           background-color: $color-primary;
           padding: 10px 20px;
           border-radius: 30px;
@@ -261,6 +262,34 @@ $transition-smooth: all 1.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
           &:hover {
             background-color: $color-white;
             color: $color-primary;
+          }
+        }
+
+        &__divider {
+          border: 1px solid #6d6969;
+          height: 1px;
+          width: 100%;
+          margin: 10px 0;
+        }
+
+        &__event {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          gap: 6px;
+          font-size: 1.2rem;
+          font-weight: 400;
+
+          h3 {
+            font-size: 1.2rem;
+            font-weight: 400;
+            color: $color-white;
+          }
+
+          p {
+            font-size: 2rem;
+            font-weight: 400;
           }
         }
       }
@@ -283,6 +312,7 @@ $transition-smooth: all 1.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     min-height: 100vh;
     background-size: cover;
     background-position: center;
+    margin-top: 50px;
 
     &::before {
       content: "";
@@ -354,6 +384,25 @@ $transition-smooth: all 1.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
         visibility: hidden;
       }
 
+      .intimate_party_day {
+        position: relative;
+        font-weight: 700;
+        font-size: 1.2rem;
+        color: #000;
+
+        .heart {
+          position: absolute;
+          bottom: -34px;
+          z-index: -1;
+          left: 50%;
+          transform: translateX(-50%);
+          color: #ffb6c1;
+          font-size: 4.5rem;
+          animation: heartbeat 1.5s ease-in-out infinite;
+          filter: drop-shadow(0 0 8px rgba(255, 182, 193, 0.9));
+        }
+      }
+
       .wedding_day {
         position: relative;
         font-weight: 700;
@@ -366,12 +415,313 @@ $transition-smooth: all 1.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
           z-index: -1;
           left: 50%;
           transform: translateX(-50%);
-          color: $color-white;
+          color: #ff69b4;
           font-size: 4.5rem;
           animation: heartbeat 1.5s ease-in-out infinite;
-          filter: drop-shadow(0 0 3px rgba(255, 255, 255, 0.8));
+          filter: drop-shadow(0 0 3px rgba(255, 105, 180, 0.8));
         }
       }
+    }
+
+    .calendar_legend {
+      margin-top: 40px;
+      display: flex;
+      flex-direction: column;
+      background: rgba(0, 0, 0, 0.4);
+      padding: 10px 20px;
+      border-radius: 12px;
+
+      .legend_item {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        color: $color-white;
+        font-size: 1rem;
+        text-shadow: $shadow-text;
+
+        span:first-child {
+          font-size: 2rem;
+        }
+      }
+
+      .legend_heart_light {
+        color: #ffb6c1;
+        filter: drop-shadow(0 0 4px rgba(255, 182, 193, 0.9));
+      }
+
+      .legend_heart_deep {
+        color: #ff69b4;
+        filter: drop-shadow(0 0 4px rgba(255, 120, 192, 0.9));
+      }
+    }
+  }
+
+  .section_6 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 50px;
+
+    &__image {
+      opacity: 0;
+      transform: scale(0.9);
+      transition: $transition-smooth;
+
+      img {
+        width: 100%;
+        animation: shake 2s ease-in-out 1s;
+        object-fit: cover;
+        width: 100%;
+      }
+
+      &.show {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+
+    &__content {
+      &__text {
+        margin: 20px 10px;
+        font-size: 1.2rem;
+        font-weight: 400;
+        text-align: justify;
+        text-justify: inter-word;
+      }
+    }
+  }
+
+  // Section 7: Album Slider
+  .section_7 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 50px 0;
+    padding: 0 20px;
+
+    &__content {
+      width: 100%;
+      max-width: 1200px;
+      @include slide-up-animation;
+    }
+
+    &__title {
+      font-size: 2.5rem;
+      font-weight: 600;
+      color: $color-primary;
+      text-align: center;
+      font-family: "Great Vibes", cursive;
+      margin-bottom: 10px;
+    }
+
+    &__subtitle {
+      font-size: 1rem;
+      font-weight: 400;
+      color: $color-primary;
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    &__main_image {
+      position: relative;
+      width: 100%;
+      height: 60vh;
+      margin-bottom: 30px;
+      border-radius: $border-radius;
+      overflow: hidden;
+      box-shadow: $shadow-box;
+      cursor: pointer;
+
+      &__img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.5s ease;
+
+        &:hover {
+          transform: scale(1.05);
+        }
+      }
+    }
+
+    &__image_counter {
+      position: absolute;
+      bottom: 20px;
+      right: 20px;
+      background: rgba(0, 0, 0, 0.7);
+      color: $color-white;
+      padding: 8px 16px;
+      border-radius: 20px;
+      font-size: 0.9rem;
+      font-weight: 500;
+    }
+
+    &__thumbnails {
+      display: flex;
+      gap: 10px;
+      overflow-x: auto;
+      padding: 10px 0;
+      scroll-behavior: smooth;
+
+      &::-webkit-scrollbar {
+        height: 8px;
+      }
+
+      &::-webkit-scrollbar-track {
+        background: #f1f1f1;
+        border-radius: 10px;
+      }
+
+      &::-webkit-scrollbar-thumb {
+        background: $color-primary;
+        border-radius: 10px;
+
+        &:hover {
+          background: darken($color-primary, 10%);
+        }
+      }
+    }
+
+    &__thumbnail {
+      flex-shrink: 0;
+      width: 120px;
+      height: 80px;
+      border-radius: $border-radius;
+      overflow: hidden;
+      cursor: pointer;
+      border: 3px solid transparent;
+      transition: all 0.3s ease;
+      opacity: 0.6;
+
+      &:hover {
+        opacity: 1;
+        transform: scale(1.05);
+      }
+
+      &.active {
+        border-color: $color-primary;
+        opacity: 1;
+        box-shadow: 0 0 15px rgba(109, 102, 86, 0.5);
+      }
+
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+    }
+  }
+
+  // Modal
+  .modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.95);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+    animation: fadeIn 0.3s ease;
+
+    &__content {
+      position: relative;
+      width: 90%;
+      height: 90%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    &__image {
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain;
+      border-radius: $border-radius;
+      box-shadow: 0 0 30px rgba(255, 255, 255, 0.1);
+    }
+
+    &__close {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      background: rgba(255, 255, 255, 0.2);
+      color: $color-white;
+      border: none;
+      font-size: 3rem;
+      cursor: pointer;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s ease;
+      line-height: 1;
+      padding: 0;
+
+      &:hover {
+        background: rgba(255, 255, 255, 0.3);
+        transform: rotate(90deg);
+      }
+    }
+
+    &__prev,
+    &__next {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(255, 255, 255, 0.2);
+      color: $color-white;
+      border: none;
+      font-size: 2rem;
+      cursor: pointer;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s ease;
+
+      &:hover {
+        background: rgba(255, 255, 255, 0.3);
+        transform: translateY(-50%) scale(1.1);
+      }
+    }
+
+    &__prev {
+      left: 20px;
+    }
+
+    &__next {
+      right: 20px;
+    }
+
+    &__counter {
+      position: absolute;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: rgba(0, 0, 0, 0.7);
+      color: $color-white;
+      padding: 10px 20px;
+      border-radius: 25px;
+      font-size: 1rem;
+      font-weight: 500;
+    }
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
     }
   }
 
