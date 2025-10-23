@@ -45,6 +45,11 @@ const Home = () => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isUserInteracted, setIsUserInteracted] = useState(false);
+  const [touchStart, setTouchStart] = useState(0);
+  const [touchEnd, setTouchEnd] = useState(0);
+
+  // Minimum swipe distance (in px)
+  const minSwipeDistance = 50;
 
   // Auto slide effect - only run when user hasn't interacted
   useEffect(() => {
@@ -88,6 +93,32 @@ const Home = () => {
     );
   };
 
+  // Touch handlers for swipe gestures
+  const onTouchStart = (e) => {
+    setTouchEnd(0); // Reset touchEnd
+    setTouchStart(e.targetTouches[0].clientX);
+  };
+
+  const onTouchMove = (e) => {
+    setTouchEnd(e.targetTouches[0].clientX);
+  };
+
+  const onTouchEnd = () => {
+    if (!touchStart || !touchEnd) return;
+
+    const distance = touchStart - touchEnd;
+    const isLeftSwipe = distance > minSwipeDistance;
+    const isRightSwipe = distance < -minSwipeDistance;
+
+    if (isLeftSwipe) {
+      // Swipe left -> next image
+      handleNextImage();
+    } else if (isRightSwipe) {
+      // Swipe right -> previous image
+      handlePrevImage();
+    }
+  };
+
   return (
     <div className={style.home}>
       {/* Hero Section */}
@@ -97,6 +128,7 @@ const Home = () => {
             className={style.section_1__image}
             src="/assets/img/0F9A1826.JPG"
             alt="Wedding couple"
+            loading="eager"
           />
           <div
             className={clsx(style.section_1__content, {
@@ -148,6 +180,7 @@ const Home = () => {
                 className={style.person__image}
                 src="/assets/img/0F9A0024.JPG"
                 alt="Groom"
+                loading="lazy"
               />
             </div>
 
@@ -161,6 +194,7 @@ const Home = () => {
                 className={style.person__image}
                 src="/assets/img/0F9A0704.JPG"
                 alt="Bride"
+                loading="lazy"
               />
               <div className={style.person__name}>
                 <p>Cô Dâu</p>
@@ -345,7 +379,11 @@ const Home = () => {
                 [style.show]: showSection6,
               })}
             >
-              <img src="/assets/img/0F9A1130.JPG" alt="Wedding couple" />
+              <img
+                src="/assets/img/0F9A1130.JPG"
+                alt="Wedding couple"
+                loading="lazy"
+              />
             </div>
           </div>
         </div>
@@ -365,12 +403,18 @@ const Home = () => {
             </p>
 
             {/* Main Image Display */}
-            <div className={style.section_7__main_image}>
+            <div
+              className={style.section_7__main_image}
+              onTouchStart={onTouchStart}
+              onTouchMove={onTouchMove}
+              onTouchEnd={onTouchEnd}
+            >
               <img
                 src={albumImages[currentImageIndex]}
                 alt={`Wedding ${currentImageIndex + 1}`}
                 onClick={handleImageClick}
                 className={style.section_7__main_image__img}
+                loading="eager"
               />
               <div className={style.section_7__image_counter}>
                 {currentImageIndex + 1} / {albumImages.length}
@@ -387,7 +431,11 @@ const Home = () => {
                   })}
                   onClick={() => handleThumbnailClick(index)}
                 >
-                  <img src={image} alt={`Thumbnail ${index + 1}`} />
+                  <img
+                    src={image}
+                    alt={`Thumbnail ${index + 1}`}
+                    loading="lazy"
+                  />
                 </div>
               ))}
             </div>
@@ -401,6 +449,9 @@ const Home = () => {
           <div
             className={style.modal__content}
             onClick={(e) => e.stopPropagation()}
+            onTouchStart={onTouchStart}
+            onTouchMove={onTouchMove}
+            onTouchEnd={onTouchEnd}
           >
             <button className={style.modal__close} onClick={handleCloseModal}>
               &times;
