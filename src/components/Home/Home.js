@@ -125,7 +125,7 @@ const Home = () => {
       {/* Hero Section */}
       <section id="home" ref={section1Ref}>
         <div className={style.section_1}>
-          <img
+          <image
             className={style.section_1__image}
             src={getAssetUrl("/assets/img/0F9A1826.JPG")}
             alt="Wedding couple"
@@ -177,7 +177,7 @@ const Home = () => {
                 <p>Chú Rể</p>
                 ĐOÀN SƠN
               </div>
-              <img
+              <image
                 className={style.person__image}
                 src={getAssetUrl("/assets/img/0F9A0024.JPG")}
                 alt="Groom"
@@ -191,7 +191,7 @@ const Home = () => {
                 [style.show]: showSection2,
               })}
             >
-              <img
+              <image
                 className={style.person__image}
                 src={getAssetUrl("/assets/img/0F9A0704.JPG")}
                 alt="Bride"
