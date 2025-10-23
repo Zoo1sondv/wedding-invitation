@@ -9,7 +9,7 @@ const HeroSection = ({ sectionRef, showSection }) => {
       <div className={style.hero}>
         <img
           className={style.hero__image}
-          src={getAssetUrl("/assets/img/0F9A1826.JPG")}
+          src={getAssetUrl("/assets/img/0F9A1826.jpg")}
           alt="Wedding couple"
           loading="eager"
         />

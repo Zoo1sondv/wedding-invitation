@@ -38,7 +38,7 @@ const InvitationSection = ({ sectionRef, showSection }) => {
             </div>
             <img
               className={style.person__image}
-              src={getAssetUrl("/assets/img/0F9A0024.JPG")}
+              src={getAssetUrl("/assets/img/0F9A0024.jpg")}
               alt="Groom"
               loading="lazy"
             />
@@ -52,7 +52,7 @@ const InvitationSection = ({ sectionRef, showSection }) => {
           >
             <img
               className={style.person__image}
-              src={getAssetUrl("/assets/img/0F9A0704.JPG")}
+              src={getAssetUrl("/assets/img/0F9A0704.jpg")}
               alt="Bride"
               loading="lazy"
             />

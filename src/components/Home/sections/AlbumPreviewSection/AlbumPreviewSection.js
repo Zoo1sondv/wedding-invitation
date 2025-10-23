@@ -19,7 +19,7 @@ const AlbumPreviewSection = ({ sectionRef, showSection }) => {
             })}
           >
             <img
-              src={getAssetUrl("/assets/img/0F9A1130.JPG")}
+              src={getAssetUrl("/assets/img/0F9A1130.jpg")}
               alt="Wedding couple"
               loading="lazy"
             />
