@@ -1,19 +1,7 @@
-// Variables
+@import "../../../../styles/animations.scss";
+
 $color-white: #fff;
 $shadow-text: 2px 2px 4px rgba(0, 0, 0, 0.5);
-$transition-smooth: all 1.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-
-// Mixins
-@mixin slide-up-animation {
-  opacity: 0;
-  transform: translateY(80px);
-  transition: $transition-smooth;
-
-  &.show {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
 
 .calendar {
   position: relative;
@@ -39,7 +27,6 @@ $transition-smooth: all 1.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     position: relative;
     z-index: 1;
     padding: 40px 20px;
-    @include slide-up-animation;
   }
 
   &__month {
@@ -50,6 +37,7 @@ $transition-smooth: all 1.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     text-shadow: $shadow-text;
     margin-bottom: 30px;
     font-weight: 400;
+    @include zoomIn;
   }
 
   &__weekdays {
@@ -58,6 +46,7 @@ $transition-smooth: all 1.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     gap: 10px;
     margin-bottom: 15px;
     text-align: center;
+    @include slideLeft;
 
     div {
       color: $color-white;
@@ -72,6 +61,7 @@ $transition-smooth: all 1.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     display: grid;
     grid-template-columns: repeat(7, 1fr);
     gap: 8px;
+    @include slideUpDelay(0.3s);
 
     div {
       aspect-ratio: 1;
@@ -100,16 +90,24 @@ $transition-smooth: all 1.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
       position: relative;
       font-weight: 700;
       font-size: 1.2rem;
-      color: #000;
+      color: #f8c5c5;
 
       .heart {
         position: absolute;
         z-index: -1;
         left: 50%;
+        bottom: -8px;
         transform: translateX(-50%);
-        width: 60px;
-        height: 60px;
+        font-size: 4.5rem;
         animation: heartbeat 1.5s ease-in-out infinite;
+      }
+
+      .heart_light {
+        color: #ff69b4;
+      }
+
+      .heart_deep {
+        color: #dc143c;
       }
     }
   }
@@ -122,6 +120,7 @@ $transition-smooth: all 1.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     background: rgba(0, 0, 0, 0.4);
     padding: 10px 20px;
     border-radius: 12px;
+    @include slideRight;
 
     .legend_item {
       display: flex;
@@ -130,17 +129,16 @@ $transition-smooth: all 1.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
       color: $color-white;
       font-size: 1rem;
       text-shadow: $shadow-text;
-
-      img {
-        width: 32px;
-        height: 32px;
-      }
     }
 
-    .legend_heart_light,
+    .legend_heart_light {
+      font-size: 2rem;
+      color: #ff69b4;
+    }
+
     .legend_heart_deep {
-      width: 32px;
-      height: 32px;
+      font-size: 2rem;
+      color: #dc143c;
     }
   }
 }
@@ -151,11 +149,10 @@ $transition-smooth: all 1.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     transform: translateX(-50%) scale(1);
   }
   50% {
-    transform: translateX(-50%) scale(1.2);
+    transform: translateX(-50%) scale(1.15);
   }
 }
 
-// Mobile responsive
 @media (max-width: 768px) {
   .calendar {
     &__month {
@@ -166,9 +163,8 @@ $transition-smooth: all 1.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
       .intimate_party_day,
       .wedding_day {
         .heart {
-          width: 40px;
-          height: 40px;
-          top: 4px;
+          font-size: 3rem;
+          bottom: -5px;
         }
       }
     }

@@ -15,10 +15,8 @@ export const LoadingProvider = ({ children }) => {
   const [loadingComplete, setLoadingComplete] = useState(false);
 
   useEffect(() => {
-    // Loading duration: 5 seconds
     const timer = setTimeout(() => {
       setIsLoading(false);
-      // Đợi thêm một chút để animation fade out hoàn tất
       setTimeout(() => {
         setLoadingComplete(true);
       }, 300);

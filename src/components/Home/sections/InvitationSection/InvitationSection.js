@@ -26,7 +26,6 @@ const InvitationSection = ({ sectionRef, showSection }) => {
         </div>
 
         <div className={style.invitation__images}>
-          {/* Groom */}
           <div
             className={clsx(style.person, style.person__groom, {
               [style.show]: showSection,
@@ -44,7 +43,6 @@ const InvitationSection = ({ sectionRef, showSection }) => {
             />
           </div>
 
-          {/* Bride */}
           <div
             className={clsx(style.person, style.person__bride, {
               [style.show]: showSection,

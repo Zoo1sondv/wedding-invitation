@@ -1,5 +1,4 @@
-// Variables
-$transition-smooth: all 1.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+@import "../../../../styles/animations.scss";
 
 .albumPreview {
   display: flex;
@@ -16,19 +15,12 @@ $transition-smooth: all 1.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   }
 
   &__image {
-    opacity: 0;
-    transform: scale(0.9);
-    transition: $transition-smooth;
+    @include rotateIn;
 
     img {
       width: 100%;
       animation: shake 2s ease-in-out 1s;
       object-fit: cover;
-    }
-
-    &.show {
-      opacity: 1;
-      transform: scale(1);
     }
   }
 }

@@ -1,5 +1,5 @@
 import React from "react";
-import style from "./videoSection.module.scss";
+import style from "./VideoSection.module.scss";
 
 const VideoSection = ({ sectionRef, showSection }) => {
   return (
@@ -11,9 +11,12 @@ const VideoSection = ({ sectionRef, showSection }) => {
         <div className={style.videoSection__content}>
           <div className={style.videoSection__header}>
             <h2>Lễ Cưới Hôn Phối Trong Nhà Thờ</h2>
-            <p>Hãy cùng chúng tôi xem lại những khoảnh khắc thiêng liêng và tuyệt đẹp trong ngày trọng đại của chúng tôi</p>
+            <p>
+              Hãy cùng chúng mình xem lại những khoảnh khắc thiêng liêng và
+              tuyệt đẹp trong ngày trọng đại của chúng mình
+            </p>
           </div>
-          
+
           <div className={style.videoSection__videoContainer}>
             <div className={style.videoSection__videoWrapper}>
               <iframe
@@ -29,13 +32,14 @@ const VideoSection = ({ sectionRef, showSection }) => {
 
           <div className={style.videoSection__description}>
             <p>
-              💒 Cảm ơn tất cả những người thân yêu đã có mặt trong ngày trọng đại của chúng tôi. 
-              Những khoảnh khắc thiêng liêng này sẽ mãi là kỷ niệm đẹp nhất trong cuộc đời chúng tôi.
+              💒 Cảm ơn tất cả những người thân yêu đã có mặt trong ngày trọng
+              đại của chúng mình. Những khoảnh khắc thiêng liêng này sẽ mãi là
+              kỷ niệm đẹp nhất trong cuộc đời chúng mình.
             </p>
             <div className={style.videoSection__cta}>
-              <a 
-                href="https://www.youtube.com/watch?v=gZsGz2qaWzg" 
-                target="_blank" 
+              <a
+                href="https://www.youtube.com/watch?v=gZsGz2qaWzg"
+                target="_blank"
                 rel="noopener noreferrer"
                 className={style.videoSection__ytButton}
               >

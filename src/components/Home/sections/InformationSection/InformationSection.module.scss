@@ -1,17 +1,4 @@
-// Variables
-$transition-smooth: all 1.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-
-// Mixins
-@mixin slide-up-animation {
-  opacity: 0;
-  transform: translateY(80px);
-  transition: $transition-smooth;
-
-  &.show {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
+@import "../../../../styles/animations.scss";
 
 .information {
   display: flex;
@@ -25,6 +12,6 @@ $transition-smooth: all 1.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     margin: 0 10px;
     text-align: justify;
     text-justify: inter-word;
-    @include slide-up-animation;
+    @include fadeIn;
   }
 }

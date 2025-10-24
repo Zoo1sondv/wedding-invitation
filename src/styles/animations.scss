@@ -1,0 +1,210 @@
+$transition-smooth: all 2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+$transition-fast: all 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+$transition-bounce: all 1.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+
+@mixin fadeIn {
+  opacity: 0;
+  transition: $transition-smooth;
+
+  &.show {
+    opacity: 1;
+  }
+}
+
+@mixin slideUp {
+  opacity: 0;
+  transform: translateY(80px);
+  transition: $transition-smooth;
+
+  &.show {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@mixin slideDown {
+  opacity: 0;
+  transform: translateY(-80px);
+  transition: $transition-smooth;
+
+  &.show {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@mixin slideLeft {
+  opacity: 0;
+  transform: translateX(-100px);
+  transition: $transition-smooth;
+
+  &.show {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@mixin slideRight {
+  opacity: 0;
+  transform: translateX(100px);
+  transition: $transition-smooth;
+
+  &.show {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@mixin zoomIn {
+  opacity: 0;
+  transform: scale(0.8);
+  transition: $transition-smooth;
+
+  &.show {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@mixin zoomOut {
+  opacity: 0;
+  transform: scale(1.2);
+  transition: $transition-smooth;
+
+  &.show {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@mixin rotateIn {
+  opacity: 0;
+  transform: rotate(-180deg) scale(0.5);
+  transition: $transition-smooth;
+
+  &.show {
+    opacity: 1;
+    transform: rotate(0deg) scale(1);
+  }
+}
+
+@mixin flipIn {
+  opacity: 0;
+  transform: perspective(400px) rotateY(90deg);
+  transition: $transition-smooth;
+
+  &.show {
+    opacity: 1;
+    transform: perspective(400px) rotateY(0deg);
+  }
+}
+
+@mixin bounceIn {
+  opacity: 0;
+  transform: scale(0.3);
+  transition: $transition-bounce;
+
+  &.show {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@mixin slideUpFade {
+  opacity: 0;
+  transform: translateY(50px);
+  transition: $transition-fast;
+
+  &.show {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@mixin slideLeftBounce {
+  opacity: 0;
+  transform: translateX(-100px);
+  transition: $transition-bounce;
+
+  &.show {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@mixin slideRightBounce {
+  opacity: 0;
+  transform: translateX(100px);
+  transition: $transition-bounce;
+
+  &.show {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@mixin slideUpLeft {
+  opacity: 0;
+  transform: translate(-80px, 60px);
+  transition: $transition-smooth;
+
+  &.show {
+    opacity: 1;
+    transform: translate(0, 0);
+  }
+}
+
+@mixin slideUpRight {
+  opacity: 0;
+  transform: translate(80px, 60px);
+  transition: $transition-smooth;
+
+  &.show {
+    opacity: 1;
+    transform: translate(0, 0);
+  }
+}
+
+@mixin slideDownLeft {
+  opacity: 0;
+  transform: translate(-80px, -60px);
+  transition: $transition-smooth;
+
+  &.show {
+    opacity: 1;
+    transform: translate(0, 0);
+  }
+}
+
+@mixin slideDownRight {
+  opacity: 0;
+  transform: translate(80px, -60px);
+  transition: $transition-smooth;
+
+  &.show {
+    opacity: 1;
+    transform: translate(0, 0);
+  }
+}
+
+@mixin fadeInDelay($delay: 0.3s) {
+  opacity: 0;
+  transition: $transition-smooth;
+  transition-delay: $delay;
+
+  &.show {
+    opacity: 1;
+  }
+}
+
+@mixin slideUpDelay($delay: 0.3s) {
+  opacity: 0;
+  transform: translateY(60px);
+  transition: $transition-smooth;
+  transition-delay: $delay;
+
+  &.show {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

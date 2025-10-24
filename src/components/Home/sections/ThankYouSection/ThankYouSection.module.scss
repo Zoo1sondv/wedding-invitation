@@ -1,15 +1,6 @@
-@use "sass:color";
+@import "../../../../styles/animations.scss";
 
-// Variables
-$color-primary: #6d6656;
 $color-white: #fff;
-$color-accent: #d4af37;
-$color-pink: #ff6b9d;
-$color-gradient-start: #ffeaa7;
-$color-gradient-end: #fab1a0;
-$shadow-text: 2px 2px 4px rgba(0, 0, 0, 0.3);
-$shadow-box: 0 0 20px 0 rgba(0, 0, 0, 0.1);
-$border-radius: 15px;
 
 .thankYouSection {
   background-size: cover;
@@ -38,16 +29,8 @@ $border-radius: 15px;
     margin: 0 auto;
     padding: 0 20px;
     text-align: center;
-    opacity: 1;
-    transform: translateY(0);
-    transition: all 0.8s ease;
     position: relative;
     z-index: 1;
-
-    &.show {
-      opacity: 1;
-      transform: translateY(0);
-    }
   }
 
   &__title {
@@ -58,12 +41,14 @@ $border-radius: 15px;
     text-shadow: 3px 3px 10px rgba(0, 0, 0, 0.8);
     margin-bottom: 30px;
     letter-spacing: 3px;
+    @include zoomIn;
   }
 
   &__text {
     background: transparent;
     padding: 40px;
     border-radius: 15px;
+    @include slideUpFade;
 
     p {
       font-size: 1.3rem;
@@ -87,7 +72,6 @@ $border-radius: 15px;
   }
 }
 
-// Responsive
 @media (max-width: 768px) {
   .thankYouSection {
     padding: 60px 0;

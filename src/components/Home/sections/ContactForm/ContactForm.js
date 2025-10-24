@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import clsx from "clsx";
+import { FaCalendarCheck, FaCheckCircle, FaTimesCircle } from "react-icons/fa";
 import style from "./ContactForm.module.scss";
 import { GOOGLE_FORM_CONFIG } from "../../../../utils/googleForm";
 import { getAssetUrl } from "../../../../utils/config";
@@ -124,6 +125,12 @@ const ContactForm = ({ sectionRef, showSection }) => {
           })}
         >
           <div className={style.contactForm__header}>
+            <div className={style.contactForm__header_icon}>
+              <FaCalendarCheck />
+            </div>
+            <h2 className={style.contactForm__header_title}>
+              Xác Nhận Tham Dự
+            </h2>
             <p>
               Hãy xác nhận sự có mặt của bạn trước ngày 05.11.2025 để chúng mình
               chuẩn bị đón tiếp một cách chu đáo nhất.
@@ -133,7 +140,6 @@ const ContactForm = ({ sectionRef, showSection }) => {
           </div>
 
           <form className={style.contactForm__form} onSubmit={handleSubmit}>
-            {/* Tên của bạn */}
             <div className={style.contactForm__field}>
               <div htmlFor="name">
                 <span className={style.contactForm__label}>
@@ -186,7 +192,8 @@ const ContactForm = ({ sectionRef, showSection }) => {
                     required
                   />
                   <span className={style.contactForm__radioText}>
-                    Có, tôi sẽ tham dự 🎉
+                    <FaCheckCircle className={style.icon_yes} />
+                    Có, tôi sẽ tham dự
                   </span>
                 </label>
                 <label className={style.contactForm__radio}>
@@ -199,7 +206,8 @@ const ContactForm = ({ sectionRef, showSection }) => {
                     required
                   />
                   <span className={style.contactForm__radioText}>
-                    Rất tiếc, tôi không thể tham dự 😢
+                    <FaTimesCircle className={style.icon_no} />
+                    Rất tiếc, tôi không thể tham dự
                   </span>
                 </label>
                 <label className={style.contactForm__radio}>

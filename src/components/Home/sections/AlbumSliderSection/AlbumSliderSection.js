@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import clsx from "clsx";
 import style from "./AlbumSliderSection.module.scss";
 
@@ -7,52 +7,77 @@ const AlbumSliderSection = ({
   showSection,
   albumImages,
   onImageClick,
+  currentIndex = 0,
+  onIndexChange,
 }) => {
-  const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [isUserInteracted, setIsUserInteracted] = useState(false);
   const [touchStart, setTouchStart] = useState(0);
   const [touchEnd, setTouchEnd] = useState(0);
-
-  // Minimum swipe distance (in px)
   const minSwipeDistance = 50;
+  const thumbnailsRef = useRef(null);
+  const thumbnailRefs = useRef([]);
 
-  // Auto slide effect - only run when user hasn't interacted
+  const currentImageIndex = currentIndex;
+  const setCurrentImageIndex = (value) => {
+    if (typeof value === "function") {
+      onIndexChange((prev) => value(prev));
+    } else {
+      onIndexChange(value);
+    }
+  };
+
+  useEffect(() => {
+    if (thumbnailRefs.current[currentImageIndex] && thumbnailsRef.current) {
+      const thumbnail = thumbnailRefs.current[currentImageIndex];
+      const container = thumbnailsRef.current;
+      const thumbnailLeft = thumbnail.offsetLeft;
+      const thumbnailWidth = thumbnail.offsetWidth;
+      const containerWidth = container.offsetWidth;
+      const scrollPosition =
+        thumbnailLeft - containerWidth / 2 + thumbnailWidth / 2;
+
+      container.scrollTo({
+        left: scrollPosition,
+        behavior: "smooth",
+      });
+    }
+  }, [currentImageIndex]);
+
   useEffect(() => {
     if (isUserInteracted) {
-      return; // Don't auto-slide if user has interacted
+      return;
     }
 
     const timer = setInterval(() => {
       setCurrentImageIndex((prevIndex) =>
         prevIndex === albumImages.length - 1 ? 0 : prevIndex + 1
       );
-    }, 3000); // Change image every 3 seconds
+    }, 3000);
 
     return () => clearInterval(timer);
   }, [albumImages.length, isUserInteracted]);
 
   const handleThumbnailClick = (index) => {
-    setIsUserInteracted(true); // Stop auto-slide when user clicks thumbnail
+    setIsUserInteracted(true);
     setCurrentImageIndex(index);
   };
 
   const handleNextImage = () => {
-    setIsUserInteracted(true); // Stop auto-slide when user navigates
+    setIsUserInteracted(true);
     setCurrentImageIndex((prevIndex) =>
       prevIndex === albumImages.length - 1 ? 0 : prevIndex + 1
     );
   };
 
   const handlePrevImage = () => {
-    setIsUserInteracted(true); // Stop auto-slide when user navigates
+    setIsUserInteracted(true);
     setCurrentImageIndex((prevIndex) =>
       prevIndex === 0 ? albumImages.length - 1 : prevIndex - 1
     );
   };
 
-  // Touch handlers for swipe gestures
   const onTouchStart = (e) => {
-    setTouchEnd(0); // Reset touchEnd
+    setTouchEnd(0);
     setTouchStart(e.targetTouches[0].clientX);
   };
 
@@ -68,10 +93,8 @@ const AlbumSliderSection = ({
     const isRightSwipe = distance < -minSwipeDistance;
 
     if (isLeftSwipe) {
-      // Swipe left -> next image
       handleNextImage();
     } else if (isRightSwipe) {
-      // Swipe right -> previous image
       handlePrevImage();
     }
   };
@@ -86,10 +109,9 @@ const AlbumSliderSection = ({
         >
           <h1 className={style.albumSlider__title}>Album Ảnh Cưới</h1>
           <p className={style.albumSlider__subtitle}>
-            Những khoảnh khắc đáng nhớ của chúng tôi
+            Những khoảnh khắc đáng nhớ của chúng mình
           </p>
 
-          {/* Main Image Display */}
           <div
             className={style.albumSlider__main_image}
             onTouchStart={onTouchStart}
@@ -108,11 +130,11 @@ const AlbumSliderSection = ({
             </div>
           </div>
 
-          {/* Thumbnail List */}
-          <div className={style.albumSlider__thumbnails}>
+          <div className={style.albumSlider__thumbnails} ref={thumbnailsRef}>
             {albumImages.map((image, index) => (
               <div
                 key={index}
+                ref={(el) => (thumbnailRefs.current[index] = el)}
                 className={clsx(style.albumSlider__thumbnail, {
                   [style.active]: index === currentImageIndex,
                 })}

@@ -17,7 +17,6 @@ import ThankYouSection from "./sections/ThankYouSection";
 import style from "./home.module.scss";
 
 const Home = () => {
-  // Scroll animation hooks for each section
   const [heroRef, showHero] = useScrollAnimation({ threshold: 0.3 });
   const [invitationRef, showInvitation] = useScrollAnimation({
     threshold: 0.3,
@@ -43,7 +42,6 @@ const Home = () => {
   const [countdownRef, showCountdown] = useScrollAnimation({ threshold: 0.3 });
   const [thankYouRef, showThankYou] = useScrollAnimation({ threshold: 0.3 });
 
-  // Album images
   const albumImages = [
     getAssetUrl("/assets/img/0F9A0024.jpg"),
     getAssetUrl("/assets/img/0F9A0090.jpg"),
@@ -78,22 +76,22 @@ const Home = () => {
     getAssetUrl("/assets/img/0F9A6688.jpg"),
   ];
 
-  // Modal state
+  const [currentSliderIndex, setCurrentSliderIndex] = useState(0);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [touchStart, setTouchStart] = useState(0);
   const [touchEnd, setTouchEnd] = useState(0);
-
-  // Minimum swipe distance (in px)
   const minSwipeDistance = 50;
 
   const handleImageClick = (index) => {
     setCurrentImageIndex(index);
+    setCurrentSliderIndex(index);
     setIsModalOpen(true);
   };
 
   const handleCloseModal = () => {
     setIsModalOpen(false);
+    setCurrentSliderIndex(currentImageIndex);
   };
 
   const handleNextImage = () => {
@@ -108,17 +106,16 @@ const Home = () => {
     );
   };
 
-  // Touch handlers for swipe gestures
-  const onTouchStart = (e) => {
+  const handleTouchStart = (e) => {
     setTouchEnd(0);
     setTouchStart(e.targetTouches[0].clientX);
   };
 
-  const onTouchMove = (e) => {
+  const handleTouchMove = (e) => {
     setTouchEnd(e.targetTouches[0].clientX);
   };
 
-  const onTouchEnd = () => {
+  const handleTouchEnd = () => {
     if (!touchStart || !touchEnd) return;
 
     const distance = touchStart - touchEnd;
@@ -168,6 +165,8 @@ const Home = () => {
         showSection={showAlbumSlider}
         albumImages={albumImages}
         onImageClick={handleImageClick}
+        currentIndex={currentSliderIndex}
+        onIndexChange={setCurrentSliderIndex}
       />
 
       <VideoSection sectionRef={videoRef} showSection={showVideo} />
@@ -185,9 +184,9 @@ const Home = () => {
         onClose={handleCloseModal}
         onNext={handleNextImage}
         onPrev={handlePrevImage}
-        onTouchStart={onTouchStart}
-        onTouchMove={onTouchMove}
-        onTouchEnd={onTouchEnd}
+        onTouchStart={handleTouchStart}
+        onTouchMove={handleTouchMove}
+        onTouchEnd={handleTouchEnd}
       />
     </div>
   );

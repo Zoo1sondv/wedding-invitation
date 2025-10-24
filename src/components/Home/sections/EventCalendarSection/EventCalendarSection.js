@@ -1,5 +1,6 @@
 import React from "react";
 import clsx from "clsx";
+import { FaRegHeart } from "react-icons/fa";
 import { getAssetUrl } from "../../../../utils/config";
 import style from "./EventCalendarSection.module.scss";
 
@@ -12,14 +13,20 @@ const EventCalendarSection = ({ sectionRef, showSection }) => {
           backgroundImage: `url(${getAssetUrl("/assets/img/0F9A6398.jpg")})`,
         }}
       >
-        <div
-          className={clsx(style.calendar__content, {
-            [style.show]: showSection,
-          })}
-        >
-          <h1 className={style.calendar__month}>November</h1>
+        <div className={style.calendar__content}>
+          <h1
+            className={clsx(style.calendar__month, {
+              [style.show]: showSection,
+            })}
+          >
+            November
+          </h1>
 
-          <div className={style.calendar__weekdays}>
+          <div
+            className={clsx(style.calendar__weekdays, {
+              [style.show]: showSection,
+            })}
+          >
             <div>MON</div>
             <div>TUE</div>
             <div>WED</div>
@@ -29,7 +36,11 @@ const EventCalendarSection = ({ sectionRef, showSection }) => {
             <div>SUN</div>
           </div>
 
-          <div className={style.calendar__grid}>
+          <div
+            className={clsx(style.calendar__grid, {
+              [style.show]: showSection,
+            })}
+          >
             <div className={style.empty}></div>
             <div className={style.empty}></div>
             <div className={style.empty}></div>
@@ -45,19 +56,11 @@ const EventCalendarSection = ({ sectionRef, showSection }) => {
             <div>8</div>
             <div className={style.intimate_party_day}>
               9
-              <img
-                src={getAssetUrl("/assets/svg/heart-light.svg")}
-                alt="heart"
-                className={style.heart}
-              />
+              <FaRegHeart className={`${style.heart} ${style.heart_light}`} />
             </div>
             <div className={style.wedding_day}>
               10
-              <img
-                src={getAssetUrl("/assets/svg/heart-deep.svg")}
-                alt="heart"
-                className={style.heart}
-              />
+              <FaRegHeart className={`${style.heart} ${style.heart_deep}`} />
             </div>
             <div>11</div>
             <div>12</div>
@@ -81,21 +84,17 @@ const EventCalendarSection = ({ sectionRef, showSection }) => {
             <div>30</div>
           </div>
 
-          <div className={style.calendar__legend}>
+          <div
+            className={clsx(style.calendar__legend, {
+              [style.show]: showSection,
+            })}
+          >
             <div className={style.legend_item}>
-              <img
-                src={getAssetUrl("/assets/svg/heart-light.svg")}
-                alt="heart light"
-                className={style.legend_heart_light}
-              />
+              <FaRegHeart className={style.legend_heart_light} />
               <span>Ngày 9/11 - Tiệc Thân Mật</span>
             </div>
             <div className={style.legend_item}>
-              <img
-                src={getAssetUrl("/assets/svg/heart-deep.svg")}
-                alt="heart deep"
-                className={style.legend_heart_deep}
-              />
+              <FaRegHeart className={style.legend_heart_deep} />
               <span>Ngày 10/11 - Lễ Vu Quy & Lễ Thành Hôn</span>
             </div>
           </div>

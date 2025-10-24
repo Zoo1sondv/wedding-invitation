@@ -7,12 +7,12 @@ const LocationSection = ({ sectionRef, showSection }) => {
   return (
     <section id="location" ref={sectionRef}>
       <div className={style.location}>
-        <div
-          className={clsx(style.location__content, {
-            [style.show]: showSection,
-          })}
-        >
-          <div className={style.location__item}>
+        <div className={style.location__content}>
+          <div
+            className={clsx(style.location__item, style.location__item__groom, {
+              [style.show]: showSection,
+            })}
+          >
             <h1>Ngày Tổ Chức Tiệc</h1>
             <div className={style.location__event}>
               <h3>CHỦ NHẬT | 16H00</h3>
@@ -37,10 +37,16 @@ const LocationSection = ({ sectionRef, showSection }) => {
           <img
             src={getAssetUrl("/assets/gif/loading.gif")}
             alt="logo"
-            className={style.location__logo}
+            className={clsx(style.location__logo, {
+              [style.show]: showSection,
+            })}
           />
 
-          <div className={style.location__item}>
+          <div
+            className={clsx(style.location__item, style.location__item__bride, {
+              [style.show]: showSection,
+            })}
+          >
             <h1>Ngày Tổ Chức Tiệc</h1>
             <div className={style.location__event}>
               <h3>CHỦ NHẬT | 10H00</h3>

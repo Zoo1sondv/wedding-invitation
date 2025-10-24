@@ -8,7 +8,6 @@ function LoadingPage() {
 
   useEffect(() => {
     if (!isLoading) {
-      // Scroll về top sau khi loading xong
       window.scrollTo({ top: 0, behavior: "instant" });
     }
   }, [isLoading]);
@@ -17,7 +16,7 @@ function LoadingPage() {
     <div
       className={isLoading ? style["preloader"] : style["preloader-none"]}
       style={{
-        backgroundImage: `url("${getAssetUrl('/assets/gif/loading.gif')}")`,
+        backgroundImage: `url("${getAssetUrl("/assets/gif/loading.gif")}")`,
       }}
     />
   );
