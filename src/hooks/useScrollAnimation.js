@@ -22,8 +22,8 @@ const useScrollAnimation = (options = {}) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
           setIsVisible(true);
-        } else {
-          setIsVisible(false);
+          // Once visible, disconnect observer to prevent re-triggering
+          observer.disconnect();
         }
       });
     }, defaultOptions);
