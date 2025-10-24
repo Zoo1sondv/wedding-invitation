@@ -1,0 +1,190 @@
+@use "sass:math";
+
+// ==========================================
+// 🎨 RESPONSIVE BREAKPOINTS
+// ==========================================
+
+// Mobile First Approach
+$breakpoint-xs: 375px; // iPhone SE, small phones
+$breakpoint-sm: 576px; // Large phones
+$breakpoint-md: 768px; // Tablets
+$breakpoint-lg: 992px; // Small laptops
+$breakpoint-xl: 1200px; // Desktops
+$breakpoint-xxl: 1400px; // Large desktops
+$breakpoint-4k: 1920px; // 4K screens
+
+// ==========================================
+// 📱 RESPONSIVE MIXINS
+// ==========================================
+
+// Min-width (Desktop First)
+@mixin min-xs {
+  @media (min-width: #{$breakpoint-xs}) {
+    @content;
+  }
+}
+
+@mixin min-sm {
+  @media (min-width: #{$breakpoint-sm}) {
+    @content;
+  }
+}
+
+@mixin min-md {
+  @media (min-width: #{$breakpoint-md}) {
+    @content;
+  }
+}
+
+@mixin min-lg {
+  @media (min-width: #{$breakpoint-lg}) {
+    @content;
+  }
+}
+
+@mixin min-xl {
+  @media (min-width: #{$breakpoint-xl}) {
+    @content;
+  }
+}
+
+@mixin min-xxl {
+  @media (min-width: #{$breakpoint-xxl}) {
+    @content;
+  }
+}
+
+@mixin min-4k {
+  @media (min-width: #{$breakpoint-4k}) {
+    @content;
+  }
+}
+
+// Max-width (Mobile First)
+@mixin max-xs {
+  @media (max-width: #{$breakpoint-xs - 1}) {
+    @content;
+  }
+}
+
+@mixin max-sm {
+  @media (max-width: #{$breakpoint-sm - 1}) {
+    @content;
+  }
+}
+
+@mixin max-md {
+  @media (max-width: #{$breakpoint-md - 1}) {
+    @content;
+  }
+}
+
+@mixin max-lg {
+  @media (max-width: #{$breakpoint-lg - 1}) {
+    @content;
+  }
+}
+
+@mixin max-xl {
+  @media (max-width: #{$breakpoint-xl - 1}) {
+    @content;
+  }
+}
+
+// Between ranges
+@mixin between($min, $max) {
+  @media (min-width: $min) and (max-width: $max - 1) {
+    @content;
+  }
+}
+
+// ==========================================
+// 🔤 FLUID TYPOGRAPHY
+// ==========================================
+
+// Usage: @include fluid-font(16px, 24px);
+@mixin fluid-font($min-size, $max-size, $min-width: 375px, $max-width: 1920px) {
+  font-size: clamp(
+    #{$min-size},
+    calc(
+      #{$min-size} + (#{strip-unit($max-size)} - #{strip-unit($min-size)}) *
+        (
+          (100vw - #{$min-width}) /
+            (#{strip-unit($max-width)} - #{strip-unit($min-width)})
+        )
+    ),
+    #{$max-size}
+  );
+}
+
+// Helper function to strip units
+@function strip-unit($value) {
+  @return math.div($value, ($value * 0 + 1));
+}
+
+// ==========================================
+// 📏 RESPONSIVE SPACING
+// ==========================================
+
+// Fluid spacing
+@mixin fluid-space($property, $min-size, $max-size) {
+  #{$property}: clamp(
+    #{$min-size},
+    calc(
+      #{$min-size} + (#{strip-unit($max-size)} - #{strip-unit($min-size)}) *
+        ((100vw - 375px) / (1920 - 375))
+    ),
+    #{$max-size}
+  );
+}
+
+// Container widths
+$container-sm: 540px;
+$container-md: 720px;
+$container-lg: 960px;
+$container-xl: 1140px;
+$container-xxl: 1320px;
+
+@mixin container {
+  width: 100%;
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+
+  @include min-sm {
+    max-width: $container-sm;
+  }
+
+  @include min-md {
+    max-width: $container-md;
+    padding-right: 20px;
+    padding-left: 20px;
+  }
+
+  @include min-lg {
+    max-width: $container-lg;
+    padding-right: 30px;
+    padding-left: 30px;
+  }
+
+  @include min-xl {
+    max-width: $container-xl;
+  }
+
+  @include min-xxl {
+    max-width: $container-xxl;
+  }
+}
+
+// ==========================================
+// 🎨 COLORS (existing)
+// ==========================================
+
+$color-primary: #6d6656;
+$color-secondary: #8b7e66;
+$color-white: #fff;
+$color-black: #000;
+$color-gray: #f5f5f5;
+$color-success: #4caf50;
+$color-error: #f44336;

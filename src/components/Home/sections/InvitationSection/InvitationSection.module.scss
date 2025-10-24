@@ -1,7 +1,6 @@
-@import "../../../../styles/animations.scss";
+@use "../../../../styles/animations.scss" as *;
+@use "../../../../styles/variables.scss" as *;
 
-$color-primary: #6d6656;
-$color-white: #fff;
 $shadow-box: 0 0 10px 0 rgba(0, 0, 0, 0.5);
 $border-radius: 4px;
 
@@ -10,6 +9,14 @@ $border-radius: 4px;
   object-fit: cover;
   box-shadow: $shadow-box;
   border-radius: $border-radius;
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+
+  &:hover {
+    transform: scale(1.02);
+    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.3);
+  }
 }
 
 .invitation {
@@ -17,8 +24,9 @@ $border-radius: 4px;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  margin-top: 45px;
-  gap: 40px;
+  margin-top: clamp(30px, 6vw, 80px);
+  gap: clamp(30px, 5vw, 60px);
+  padding: 0 clamp(15px, 3vw, 40px);
 
   &__content {
     display: flex;
@@ -30,28 +38,32 @@ $border-radius: 4px;
 
     &__divider {
       border: 1px solid #6d6969;
-      height: 30px;
-      margin: 15px 0;
+      height: clamp(25px, 3vw, 40px);
+      margin: clamp(10px, 1.5vw, 20px) 0;
     }
 
     h1 {
-      font-size: 1.5rem;
+      @include fluid-font(1.25rem, 2rem);
       font-weight: 500;
       color: $color-primary;
-      text-wrap: nowrap;
+      white-space: nowrap;
     }
 
     h3 {
-      font-size: 1rem;
+      @include fluid-font(0.9rem, 1.25rem);
       font-weight: 400;
       color: $color-primary;
+      max-width: 90%;
     }
   }
 
   &__images {
     display: flex;
-    gap: 10px;
-    margin: 0 10px;
+    gap: clamp(8px, 2vw, 20px);
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 10px;
   }
 }
 
@@ -60,22 +72,25 @@ $border-radius: 4px;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 10px;
+  gap: clamp(8px, 1.5vw, 15px);
   flex: 1;
+  max-width: 500px;
 
   &__name {
-    font-size: 1.5rem;
+    @include fluid-font(1.25rem, 2rem);
     font-weight: 500;
     color: $color-primary;
     text-align: center;
 
     p {
       font-family: "Great Vibes", cursive;
+      margin: 0;
     }
   }
 
   &__image {
     @include image-style;
+    max-height: 600px;
   }
 
   &__groom {
@@ -84,5 +99,41 @@ $border-radius: 4px;
 
   &__bride {
     @include slideRightBounce;
+  }
+}
+
+// Desktop optimization
+@include min-lg {
+  .invitation {
+    padding: 0 60px;
+
+    &__content {
+      h1 {
+        font-size: 2.5rem;
+      }
+
+      h3 {
+        font-size: 1.5rem;
+      }
+    }
+
+    &__images {
+      gap: 30px;
+      padding: 0 20px;
+    }
+  }
+
+  .person {
+    &__name {
+      font-size: 2.5rem;
+    }
+  }
+}
+
+@include min-xxl {
+  .invitation {
+    &__images {
+      gap: 40px;
+    }
   }
 }

@@ -1,7 +1,6 @@
 @use "sass:color";
+@use "../../../../styles/variables.scss" as *;
 
-$color-primary: #6d6656;
-$color-white: #fff;
 $shadow-text: 2px 2px 4px rgba(0, 0, 0, 0.5);
 $shadow-box: 0 0 20px 0 rgba(0, 0, 0, 0.1);
 $border-radius: 12px;
@@ -12,8 +11,8 @@ $border-radius: 12px;
     color.adjust($color-primary, $lightness: 15%) 0%,
     color.adjust($color-primary, $lightness: -10%) 100%
   );
-  padding: 80px 0;
-  min-height: 80vh;
+  padding: clamp(50px, 8vw, 100px) 0;
+  min-height: clamp(60vh, 80vh, 100vh);
   display: flex;
   align-items: center;
   position: relative;
@@ -29,9 +28,10 @@ $border-radius: 12px;
   }
 
   &__container {
-    max-width: 1200px;
+    max-width: 1400px;
+    width: 100%;
     margin: 0 auto;
-    padding: 0 20px;
+    padding: 0 clamp(15px, 3vw, 40px);
     position: relative;
     z-index: 2;
   }
@@ -49,41 +49,43 @@ $border-radius: 12px;
   }
 
   &__header {
-    margin-bottom: 50px;
+    margin-bottom: clamp(35px, 6vw, 60px);
 
     h2 {
-      font-size: 3.5rem;
+      @include fluid-font(2rem, 4.5rem);
       color: $color-white;
-      margin-bottom: 20px;
+      margin-bottom: clamp(15px, 2vw, 25px);
       text-shadow: $shadow-text;
       font-family: "Dancing Script", cursive;
       font-weight: 700;
+      margin-top: 0;
     }
 
     p {
-      font-size: 1.3rem;
+      @include fluid-font(1rem, 1.6rem);
       color: rgba(255, 255, 255, 0.9);
       line-height: 1.6;
-      max-width: 700px;
+      max-width: min(90%, 800px);
       margin: 0 auto;
       text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
     }
   }
 
   &__videoContainer {
-    margin-bottom: 40px;
+    margin-bottom: clamp(30px, 5vw, 50px);
     display: flex;
     justify-content: center;
+    padding: 0 10px;
   }
 
   &__videoWrapper {
     position: relative;
     width: 100%;
-    max-width: 800px;
+    max-width: 1000px;
     height: 0;
     padding-bottom: 56.25%; // 16:9 aspect ratio
     background: rgba(0, 0, 0, 0.2);
-    border-radius: $border-radius;
+    border-radius: clamp(8px, 1.5vw, 16px);
     overflow: hidden;
     box-shadow: $shadow-box;
     transition:
@@ -102,18 +104,18 @@ $border-radius: 12px;
     left: 0;
     width: 100%;
     height: 100%;
-    border-radius: $border-radius;
+    border-radius: clamp(8px, 1.5vw, 16px);
   }
 
   &__description {
-    max-width: 600px;
+    max-width: min(90%, 700px);
     margin: 0 auto;
 
     p {
-      font-size: 1.2rem;
+      @include fluid-font(1rem, 1.4rem);
       color: rgba(255, 255, 255, 0.95);
       line-height: 1.8;
-      margin-bottom: 30px;
+      margin-bottom: clamp(25px, 4vw, 35px);
       text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
     }
   }
@@ -126,13 +128,13 @@ $border-radius: 12px;
   &__ytButton {
     display: inline-flex;
     align-items: center;
-    gap: 10px;
+    gap: clamp(8px, 1vw, 12px);
     background: linear-gradient(135deg, #ff0000, #cc0000);
     color: $color-white;
     text-decoration: none;
-    padding: 15px 30px;
+    padding: clamp(12px, 2vw, 18px) clamp(24px, 4vw, 35px);
     border-radius: 50px;
-    font-size: 1.1rem;
+    @include fluid-font(1rem, 1.3rem);
     font-weight: 600;
     box-shadow: 0 5px 20px rgba(255, 0, 0, 0.3);
     transition: all 0.3s ease;
@@ -140,18 +142,17 @@ $border-radius: 12px;
 
     &:hover {
       background: linear-gradient(135deg, #cc0000, #990000);
-      transform: translateY(-2px);
+      transform: translateY(-2px) scale(1.05);
       box-shadow: 0 8px 25px rgba(255, 0, 0, 0.4);
       text-decoration: none;
       color: $color-white;
     }
 
     &:active {
-      transform: translateY(0);
+      transform: translateY(0) scale(1);
     }
   }
 
-  // Show animation
   &.show {
     .videoSection__content {
       opacity: 1;
@@ -160,60 +161,15 @@ $border-radius: 12px;
   }
 }
 
-// Responsive Design
-@media (max-width: 1024px) {
-  .videoSection {
-    padding: 60px 0;
-
-    &__header h2 {
-      font-size: 3rem;
-    }
-
-    &__videoWrapper {
-      max-width: 700px;
-    }
-  }
-}
-
-@media (max-width: 768px) {
-  .videoSection {
-    padding: 50px 0;
-    min-height: 70vh;
-
-    &__container {
-      padding: 0 15px;
-    }
-
-    &__header {
-      margin-bottom: 40px;
-
-      h2 {
-        font-size: 2.5rem;
-      }
-
-      p {
-        font-size: 1.1rem;
-      }
-    }
-
-    &__videoWrapper {
-      max-width: 100%;
-    }
-
-    &__description p {
-      font-size: 1.1rem;
-    }
-
-    &__ytButton {
-      padding: 12px 25px;
-      font-size: 1rem;
-    }
-  }
-}
-
-@media (max-width: 480px) {
+// Mobile optimization
+@include max-sm {
   .videoSection {
     padding: 40px 0;
+    min-height: 60vh;
+
+    &__container {
+      padding: 0 12px;
+    }
 
     &__header {
       margin-bottom: 30px;
@@ -227,16 +183,93 @@ $border-radius: 12px;
       }
     }
 
-    &__description {
-      p {
-        font-size: 1rem;
-        margin-bottom: 25px;
-      }
+    &__videoWrapper {
+      border-radius: 8px;
     }
 
     &__ytButton {
       padding: 10px 20px;
-      font-size: 0.9rem;
+      font-size: 0.95rem;
+    }
+  }
+}
+
+// Tablet optimization
+@include between($breakpoint-md, $breakpoint-lg) {
+  .videoSection {
+    padding: 60px 0;
+
+    &__header {
+      h2 {
+        font-size: 3.5rem;
+      }
+    }
+
+    &__videoWrapper {
+      max-width: 850px;
+    }
+  }
+}
+
+// Desktop optimization
+@include min-lg {
+  .videoSection {
+    padding: 90px 0;
+
+    &__header {
+      h2 {
+        font-size: 5rem;
+        margin-bottom: 30px;
+      }
+
+      p {
+        font-size: 1.7rem;
+        max-width: 900px;
+      }
+    }
+
+    &__videoWrapper {
+      max-width: 1100px;
+
+      &:hover {
+        transform: translateY(-8px) scale(1.02);
+      }
+    }
+
+    &__description {
+      max-width: 800px;
+
+      p {
+        font-size: 1.5rem;
+      }
+    }
+
+    &__ytButton {
+      padding: 20px 40px;
+      font-size: 1.4rem;
+
+      &:hover {
+        transform: translateY(-3px) scale(1.08);
+      }
+    }
+  }
+}
+
+// Extra large desktop
+@include min-xxl {
+  .videoSection {
+    &__container {
+      max-width: 1600px;
+    }
+
+    &__header {
+      h2 {
+        font-size: 5.5rem;
+      }
+    }
+
+    &__videoWrapper {
+      max-width: 1200px;
     }
   }
 }

@@ -1,39 +1,71 @@
-@import "../../../../styles/animations.scss";
+@use "../../../../styles/animations.scss" as *;
+@use "../../../../styles/variables.scss" as *;
 
 .albumPreview {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  padding: 0 clamp(10px, 2vw, 30px);
 
   &__text {
-    margin: 20px 10px;
-    font-size: 1.2rem;
+    margin: clamp(15px, 2vw, 25px) clamp(10px, 2vw, 20px);
+    @include fluid-font(1rem, 1.5rem);
     font-weight: 400;
     text-align: justify;
     text-justify: inter-word;
+    max-width: 1200px;
+    line-height: 1.7;
+    color: #333;
   }
 
   &__image {
     @include rotateIn;
+    width: 100%;
+    max-width: 1400px;
+    transition: transform 0.3s ease;
+
+    &:hover {
+      transform: scale(1.02);
+    }
 
     img {
       width: 100%;
-      animation: shake 2s ease-in-out 1s;
       object-fit: cover;
+      border-radius: clamp(4px, 1vw, 8px);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
     }
   }
 }
 
-@keyframes shake {
-  0%,
-  100% {
-    transform: rotate(0deg);
+// Desktop enhancements
+@include min-lg {
+  .albumPreview {
+    padding: 0 40px;
+
+    &__text {
+      font-size: 1.6rem;
+      margin: 30px 25px;
+      line-height: 1.9;
+    }
+
+    &__image {
+      img {
+        border-radius: 12px;
+      }
+    }
   }
-  25% {
-    transform: rotate(-1deg);
-  }
-  75% {
-    transform: rotate(1deg);
+}
+
+@include min-xxl {
+  .albumPreview {
+    &__text {
+      max-width: 1400px;
+      font-size: 1.7rem;
+    }
+
+    &__image {
+      max-width: 1600px;
+    }
   }
 }

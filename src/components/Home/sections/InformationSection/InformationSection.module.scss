@@ -1,17 +1,48 @@
-@import "../../../../styles/animations.scss";
+@use "../../../../styles/animations.scss" as *;
+@use "../../../../styles/variables.scss" as *;
 
 .information {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  margin-top: 30px;
-  gap: 50px;
+  margin-top: clamp(25px, 4vw, 50px);
+  gap: clamp(30px, 5vw, 70px);
+  padding: 0 clamp(10px, 2vw, 30px);
 
   &__content {
-    margin: 0 10px;
+    margin: 0 clamp(10px, 2vw, 20px);
     text-align: justify;
     text-justify: inter-word;
+    max-width: 1200px;
+    width: 100%;
     @include fadeIn;
+    font-size: clamp(1rem, 1.5vw, 1.3rem);
+    line-height: 1.7;
+    color: #333;
+  }
+}
+
+// Desktop enhancements
+@include min-lg {
+  .information {
+    margin-top: 60px;
+    gap: 80px;
+    padding: 0 40px;
+
+    &__content {
+      font-size: 1.4rem;
+      line-height: 1.9;
+      margin: 0 30px;
+    }
+  }
+}
+
+@include min-xxl {
+  .information {
+    &__content {
+      max-width: 1400px;
+      font-size: 1.5rem;
+    }
   }
 }

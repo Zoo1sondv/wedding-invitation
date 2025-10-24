@@ -1,5 +1,5 @@
 import React from "react";
-import style from "./VideoSection.module.scss";
+import style from "./VideoYTSection.module.scss";
 
 const VideoSection = ({ sectionRef, showSection }) => {
   return (

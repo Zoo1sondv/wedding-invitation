@@ -1,18 +1,16 @@
-@import "../../../../styles/animations.scss";
-
-$color-white: #fff;
+@use "../../../../styles/animations.scss" as *;
+@use "../../../../styles/variables.scss" as *;
 
 .thankYouSection {
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  padding: 80px 0;
+  padding: clamp(60px, 10vw, 120px) 0;
   min-height: 100vh;
   display: flex;
   align-items: center;
   position: relative;
 
-  // Darker overlay for text readability
   &::before {
     content: "";
     position: absolute;
@@ -25,9 +23,10 @@ $color-white: #fff;
   }
 
   &__content {
-    max-width: 700px;
+    max-width: 900px;
+    width: 100%;
     margin: 0 auto;
-    padding: 0 20px;
+    padding: 0 clamp(15px, 3vw, 40px);
     text-align: center;
     position: relative;
     z-index: 1;
@@ -35,35 +34,43 @@ $color-white: #fff;
 
   &__title {
     font-family: "Great Vibes", cursive;
-    font-size: 5rem;
+    @include fluid-font(2.5rem, 6rem);
     font-weight: 700;
     color: $color-white;
     text-shadow: 3px 3px 10px rgba(0, 0, 0, 0.8);
-    margin-bottom: 30px;
-    letter-spacing: 3px;
+    margin-bottom: clamp(20px, 3vw, 40px);
+    letter-spacing: clamp(2px, 0.5vw, 4px);
+    margin-top: 0;
     @include zoomIn;
   }
 
   &__text {
     background: transparent;
-    padding: 40px;
-    border-radius: 15px;
+    padding: clamp(25px, 4vw, 50px);
+    border-radius: clamp(12px, 2vw, 20px);
     @include slideUpFade;
 
     p {
-      font-size: 1.3rem;
+      @include fluid-font(1rem, 1.8rem);
       color: $color-white;
       line-height: 1.8;
-      margin-bottom: 30px;
+      margin-bottom: clamp(20px, 3vw, 35px);
       text-align: center;
       text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
       font-weight: 500;
+      max-width: 90%;
+      margin-left: auto;
+      margin-right: auto;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
     }
   }
 
   &__signature {
-    margin-top: 20px;
-    font-size: 3.5rem;
+    margin-top: clamp(15px, 2vw, 25px);
+    @include fluid-font(2rem, 4.5rem);
     color: $color-white;
     font-family: "Dancing Script", cursive;
     font-weight: 700;
@@ -72,17 +79,19 @@ $color-white: #fff;
   }
 }
 
-@media (max-width: 768px) {
+// Mobile optimization
+@include max-sm {
   .thankYouSection {
-    padding: 60px 0;
+    padding: 50px 0;
 
     &__content {
-      padding: 0 15px;
+      padding: 0 12px;
     }
 
     &__title {
-      font-size: 3rem;
+      font-size: 2.5rem;
       letter-spacing: 2px;
+      margin-bottom: 18px;
     }
 
     &__text {
@@ -90,11 +99,68 @@ $color-white: #fff;
 
       p {
         font-size: 1rem;
+        margin-bottom: 18px;
       }
     }
 
     &__signature {
-      font-size: 1.2rem;
+      font-size: 2rem;
+      margin-top: 12px;
+    }
+  }
+}
+
+// Desktop enhancements
+@include min-lg {
+  .thankYouSection {
+    padding: 100px 0;
+
+    &__content {
+      max-width: 1000px;
+    }
+
+    &__title {
+      font-size: 7rem;
+      letter-spacing: 5px;
+      margin-bottom: 45px;
+    }
+
+    &__text {
+      padding: 60px;
+
+      p {
+        font-size: 2rem;
+        line-height: 2;
+        margin-bottom: 40px;
+      }
+    }
+
+    &__signature {
+      font-size: 5rem;
+      margin-top: 30px;
+    }
+  }
+}
+
+// Extra large desktop
+@include min-xxl {
+  .thankYouSection {
+    &__content {
+      max-width: 1200px;
+    }
+
+    &__title {
+      font-size: 7.5rem;
+    }
+
+    &__text {
+      p {
+        font-size: 2.2rem;
+      }
+    }
+
+    &__signature {
+      font-size: 5.5rem;
     }
   }
 }

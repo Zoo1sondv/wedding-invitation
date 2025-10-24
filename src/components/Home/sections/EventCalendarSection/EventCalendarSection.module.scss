@@ -1,6 +1,6 @@
-@import "../../../../styles/animations.scss";
+@use "../../../../styles/animations.scss" as *;
+@use "../../../../styles/variables.scss" as *;
 
-$color-white: #fff;
 $shadow-text: 2px 2px 4px rgba(0, 0, 0, 0.5);
 
 .calendar {
@@ -11,7 +11,8 @@ $shadow-text: 2px 2px 4px rgba(0, 0, 0, 0.5);
   min-height: 100vh;
   background-size: cover;
   background-position: center;
-  margin-top: 50px;
+  margin-top: clamp(40px, 6vw, 80px);
+  padding: clamp(40px, 6vw, 80px) 0;
 
   &::before {
     content: "";
@@ -26,16 +27,19 @@ $shadow-text: 2px 2px 4px rgba(0, 0, 0, 0.5);
   &__content {
     position: relative;
     z-index: 1;
-    padding: 40px 20px;
+    padding: clamp(30px, 5vw, 60px) clamp(15px, 3vw, 40px);
+    max-width: 900px;
+    width: 100%;
   }
 
   &__month {
     font-family: "Great Vibes", cursive;
-    font-size: 4rem;
+    @include fluid-font(2.5rem, 5rem);
     text-align: center;
     color: $color-white;
     text-shadow: $shadow-text;
-    margin-bottom: 30px;
+    margin-bottom: clamp(25px, 4vw, 45px);
+    margin-top: 0;
     font-weight: 400;
     @include zoomIn;
   }
@@ -43,24 +47,24 @@ $shadow-text: 2px 2px 4px rgba(0, 0, 0, 0.5);
   &__weekdays {
     display: grid;
     grid-template-columns: repeat(7, 1fr);
-    gap: 10px;
-    margin-bottom: 15px;
+    gap: clamp(6px, 1.5vw, 15px);
+    margin-bottom: clamp(12px, 2vw, 20px);
     text-align: center;
     @include slideLeft;
 
     div {
       color: $color-white;
-      font-size: 0.75rem;
+      @include fluid-font(0.7rem, 1rem);
       font-weight: 600;
       text-shadow: $shadow-text;
-      letter-spacing: 1px;
+      letter-spacing: clamp(0.5px, 0.1vw, 1.5px);
     }
   }
 
   &__grid {
     display: grid;
     grid-template-columns: repeat(7, 1fr);
-    gap: 8px;
+    gap: clamp(6px, 1.2vw, 12px);
     @include slideUpDelay(0.3s);
 
     div {
@@ -69,15 +73,16 @@ $shadow-text: 2px 2px 4px rgba(0, 0, 0, 0.5);
       align-items: center;
       justify-content: center;
       color: $color-white;
-      font-size: 1rem;
+      @include fluid-font(0.95rem, 1.3rem);
       font-weight: 500;
       text-shadow: $shadow-text;
       position: relative;
-      border-radius: 4px;
+      border-radius: clamp(4px, 0.8vw, 8px);
       transition: all 0.3s ease;
 
       &:not(.empty):hover {
         background: rgba(255, 255, 255, 0.2);
+        transform: scale(1.05);
       }
     }
 
@@ -89,16 +94,16 @@ $shadow-text: 2px 2px 4px rgba(0, 0, 0, 0.5);
     .wedding_day {
       position: relative;
       font-weight: 700;
-      font-size: 1.2rem;
+      @include fluid-font(1.1rem, 1.6rem);
       color: #f8c5c5;
 
       .heart {
         position: absolute;
         z-index: -1;
         left: 50%;
-        bottom: -8px;
+        bottom: clamp(-6px, -1vw, -10px);
         transform: translateX(-50%);
-        font-size: 4.5rem;
+        font-size: clamp(3.5rem, 7vw, 6rem);
         animation: heartbeat 1.5s ease-in-out infinite;
       }
 
@@ -113,31 +118,31 @@ $shadow-text: 2px 2px 4px rgba(0, 0, 0, 0.5);
   }
 
   &__legend {
-    margin-top: 40px;
+    margin-top: clamp(30px, 5vw, 50px);
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: clamp(8px, 1.5vw, 12px);
     background: rgba(0, 0, 0, 0.4);
-    padding: 10px 20px;
-    border-radius: 12px;
+    padding: clamp(12px, 2vw, 18px) clamp(18px, 3vw, 28px);
+    border-radius: clamp(10px, 1.5vw, 15px);
     @include slideRight;
 
     .legend_item {
       display: flex;
       align-items: center;
-      gap: 10px;
+      gap: clamp(8px, 1.5vw, 12px);
       color: $color-white;
-      font-size: 1rem;
+      @include fluid-font(0.95rem, 1.2rem);
       text-shadow: $shadow-text;
     }
 
     .legend_heart_light {
-      font-size: 2rem;
+      font-size: clamp(1.8rem, 3vw, 2.5rem);
       color: #ff69b4;
     }
 
     .legend_heart_deep {
-      font-size: 2rem;
+      font-size: clamp(1.8rem, 3vw, 2.5rem);
       color: #dc143c;
     }
   }
@@ -153,18 +158,152 @@ $shadow-text: 2px 2px 4px rgba(0, 0, 0, 0.5);
   }
 }
 
-@media (max-width: 768px) {
+// Mobile optimization
+@include max-sm {
   .calendar {
+    margin-top: 35px;
+    padding: 35px 0;
+
+    &__content {
+      padding: 25px 12px;
+    }
+
     &__month {
       font-size: 2.5rem;
+      margin-bottom: 22px;
+    }
+
+    &__weekdays {
+      gap: 5px;
+      margin-bottom: 10px;
+
+      div {
+        font-size: 0.7rem;
+      }
     }
 
     &__grid {
+      gap: 5px;
+
+      div {
+        font-size: 0.95rem;
+      }
+
       .intimate_party_day,
       .wedding_day {
+        font-size: 1.1rem;
+
         .heart {
-          font-size: 3rem;
+          font-size: 3.2rem;
           bottom: -5px;
+        }
+      }
+    }
+
+    &__legend {
+      margin-top: 28px;
+      padding: 10px 16px;
+
+      .legend_item {
+        font-size: 0.95rem;
+      }
+
+      .legend_heart_light,
+      .legend_heart_deep {
+        font-size: 1.8rem;
+      }
+    }
+  }
+}
+
+// Desktop enhancements
+@include min-lg {
+  .calendar {
+    margin-top: 70px;
+    padding: 70px 0;
+
+    &__content {
+      max-width: 1100px;
+      padding: 55px 40px;
+    }
+
+    &__month {
+      font-size: 5.5rem;
+      margin-bottom: 50px;
+    }
+
+    &__weekdays {
+      gap: 16px;
+      margin-bottom: 22px;
+
+      div {
+        font-size: 1.1rem;
+        letter-spacing: 1.5px;
+      }
+    }
+
+    &__grid {
+      gap: 14px;
+
+      div {
+        font-size: 1.4rem;
+
+        &:not(.empty):hover {
+          transform: scale(1.1);
+          background: rgba(255, 255, 255, 0.25);
+        }
+      }
+
+      .intimate_party_day,
+      .wedding_day {
+        font-size: 1.8rem;
+
+        .heart {
+          font-size: 6.5rem;
+          bottom: -12px;
+        }
+      }
+    }
+
+    &__legend {
+      margin-top: 55px;
+      padding: 20px 32px;
+      gap: 14px;
+
+      .legend_item {
+        font-size: 1.3rem;
+      }
+
+      .legend_heart_light,
+      .legend_heart_deep {
+        font-size: 2.8rem;
+      }
+    }
+  }
+}
+
+// Extra large desktop
+@include min-xxl {
+  .calendar {
+    &__content {
+      max-width: 1200px;
+    }
+
+    &__month {
+      font-size: 6rem;
+    }
+
+    &__grid {
+      div {
+        font-size: 1.5rem;
+      }
+
+      .intimate_party_day,
+      .wedding_day {
+        font-size: 2rem;
+
+        .heart {
+          font-size: 7rem;
         }
       }
     }
