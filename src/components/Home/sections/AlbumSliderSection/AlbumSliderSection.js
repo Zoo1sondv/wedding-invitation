@@ -125,6 +125,9 @@ const AlbumSliderSection = ({
               className={style.albumSlider__main_image__img}
               loading="eager"
             />
+            <div className={style.albumSlider__clickHint}>
+              <span>👆 Nhấn để xem chi tiết</span>
+            </div>
             <div className={style.albumSlider__image_counter}>
               {currentImageIndex + 1} / {albumImages.length}
             </div>
