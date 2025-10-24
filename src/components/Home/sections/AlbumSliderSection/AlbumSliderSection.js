@@ -2,11 +2,11 @@ import React, { useState, useEffect } from "react";
 import clsx from "clsx";
 import style from "./AlbumSliderSection.module.scss";
 
-const AlbumSliderSection = ({ 
-  sectionRef, 
-  showSection, 
-  albumImages, 
-  onImageClick 
+const AlbumSliderSection = ({
+  sectionRef,
+  showSection,
+  albumImages,
+  onImageClick,
 }) => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [isUserInteracted, setIsUserInteracted] = useState(false);
@@ -95,11 +95,11 @@ const AlbumSliderSection = ({
             onTouchStart={onTouchStart}
             onTouchMove={onTouchMove}
             onTouchEnd={onTouchEnd}
+            onClick={() => onImageClick(currentImageIndex)}
           >
             <img
               src={albumImages[currentImageIndex]}
               alt={`Wedding ${currentImageIndex + 1}`}
-              onClick={() => onImageClick(currentImageIndex)}
               className={style.albumSlider__main_image__img}
               loading="eager"
             />

@@ -10,7 +10,7 @@ const ContactForm = ({ sectionRef, showSection }) => {
     message: "",
     willAttend: "",
     companions: "",
-    guestOf: ""
+    guestOf: "",
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState(null);
@@ -18,9 +18,9 @@ const ContactForm = ({ sectionRef, showSection }) => {
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
-    setFormData(prev => ({
+    setFormData((prev) => ({
       ...prev,
-      [name]: value
+      [name]: value,
     }));
   };
 
@@ -31,47 +31,47 @@ const ContactForm = ({ sectionRef, showSection }) => {
     try {
       // Use config from googleForm.js
       const { FORM_ID, FIELD_IDS } = GOOGLE_FORM_CONFIG;
-      
+
       // Convert form values to Google Form expected values
       const convertToGoogleFormValues = (data) => {
         const converted = { ...data };
-        
+
         // Convert willAttend values
         switch (data.willAttend) {
-          case 'yes':
-            converted.willAttend = 'Có, tôi sẽ tham dự.';
+          case "yes":
+            converted.willAttend = "Có, tôi sẽ tham dự.";
             break;
-          case 'no':
-            converted.willAttend = 'Rất tiếc, tôi không thể tham dự.';
+          case "no":
+            converted.willAttend = "Rất tiếc, tôi không thể tham dự.";
             break;
-          case 'maybe':
-            converted.willAttend = 'Chưa chắc, sẽ thông báo sau.';
+          case "maybe":
+            converted.willAttend = "Chưa chắc, sẽ thông báo sau.";
             break;
           default:
             converted.willAttend = data.willAttend;
             break;
         }
-        
+
         // Convert guestOf values
         switch (data.guestOf) {
-          case 'bride':
-            converted.guestOf = 'Khách mời của cô dâu';
+          case "bride":
+            converted.guestOf = "Khách mời của cô dâu";
             break;
-          case 'groom':
-            converted.guestOf = 'Khách mời của chú rể';
+          case "groom":
+            converted.guestOf = "Khách mời của chú rể";
             break;
           default:
             converted.guestOf = data.guestOf;
             break;
         }
-        
+
         // companions values are already correct format (1 người, 2 người, etc.)
-        
+
         return converted;
       };
-      
+
       const convertedData = convertToGoogleFormValues(formData);
-      
+
       // Create URLSearchParams for proper form encoding
       const params = new URLSearchParams();
       params.append(FIELD_IDS.name, convertedData.name);
@@ -79,37 +79,36 @@ const ContactForm = ({ sectionRef, showSection }) => {
       params.append(FIELD_IDS.willAttend, convertedData.willAttend);
       params.append(FIELD_IDS.companions, convertedData.companions);
       params.append(FIELD_IDS.guestOf, convertedData.guestOf);
-      
+
       // Submit to Google Form
       const formUrl = `https://docs.google.com/forms/d/e/${FORM_ID}/formResponse`;
-      
+
       await fetch(formUrl, {
-        method: 'POST',
+        method: "POST",
         headers: {
-          'Content-Type': 'application/x-www-form-urlencoded',
+          "Content-Type": "application/x-www-form-urlencoded",
         },
         body: params.toString(),
-        mode: 'no-cors' // Important for Google Forms
+        mode: "no-cors", // Important for Google Forms
       });
-      
+
       console.log("Wedding RSVP Form Data submitted to Google Form:", formData);
-      
+
       // Success (we can't check response due to no-cors mode)
-      setSubmitStatus('success');
+      setSubmitStatus("success");
       setFormData({
         name: "",
         message: "",
         willAttend: "",
         companions: "",
-        guestOf: ""
+        guestOf: "",
       });
-      
+
       // Reset status after 3 seconds
       setTimeout(() => setSubmitStatus(null), 3000);
-      
     } catch (error) {
       console.error("Form submission error:", error);
-      setSubmitStatus('error');
+      setSubmitStatus("error");
       setTimeout(() => setSubmitStatus(null), 3000);
     } finally {
       setIsSubmitting(false);
@@ -126,7 +125,9 @@ const ContactForm = ({ sectionRef, showSection }) => {
         >
           <div className={style.contactForm__header}>
             <p>
-              Hãy xác nhận sự có mặt của bạn trước ngày 05.11.2025 để chúng mình chuẩn bị đón tiếp một cách chu đáo nhất. 
+              Hãy xác nhận sự có mặt của bạn trước ngày 05.11.2025 để chúng mình
+              chuẩn bị đón tiếp một cách chu đáo nhất.
+              <br />
               Trân trọng!
             </p>
           </div>
@@ -283,7 +284,8 @@ const ContactForm = ({ sectionRef, showSection }) => {
             {/* Bạn là khách mời của ai? */}
             <div className={style.contactForm__field}>
               <span className={style.contactForm__label}>
-                Bạn là khách mời của ai? <span className={style.required}>*</span>
+                Bạn là khách mời của ai?{" "}
+                <span className={style.required}>*</span>
               </span>
               <div className={style.contactForm__radioGroup}>
                 <label className={style.contactForm__radio}>
@@ -322,8 +324,8 @@ const ContactForm = ({ sectionRef, showSection }) => {
                 disabled={isSubmitting}
                 className={clsx(style.contactForm__button, {
                   [style.submitting]: isSubmitting,
-                  [style.success]: submitStatus === 'success',
-                  [style.error]: submitStatus === 'error'
+                  [style.success]: submitStatus === "success",
+                  [style.error]: submitStatus === "error",
                 })}
               >
                 {isSubmitting ? (
@@ -331,18 +333,12 @@ const ContactForm = ({ sectionRef, showSection }) => {
                     <span className={style.spinner}></span>
                     Đang gửi...
                   </>
-                ) : submitStatus === 'success' ? (
-                  <>
-                    ✓ Đã gửi thành công!
-                  </>
-                ) : submitStatus === 'error' ? (
-                  <>
-                    ✗ Có lỗi xảy ra, vui lòng thử lại
-                  </>
+                ) : submitStatus === "success" ? (
+                  <>✓ Đã gửi thành công!</>
+                ) : submitStatus === "error" ? (
+                  <>✗ Có lỗi xảy ra, vui lòng thử lại</>
                 ) : (
-                  <>
-                    GỬI LỜI NHẮN & XÁC NHẬN
-                  </>
+                  <>GỬI LỜI NHẮN & XÁC NHẬN</>
                 )}
               </button>
             </div>
@@ -358,10 +354,11 @@ const ContactForm = ({ sectionRef, showSection }) => {
               </button>
             </div>
 
-            {submitStatus === 'success' && (
+            {submitStatus === "success" && (
               <div className={style.contactForm__success}>
                 <p>
-                  🎉 Cảm ơn bạn đã xác nhận! Chúng tôi rất mong được gặp bạn trong ngày đặc biệt này.
+                  🎉 Cảm ơn bạn đã xác nhận! Chúng tôi rất mong được gặp bạn
+                  trong ngày đặc biệt này.
                 </p>
               </div>
             )}
@@ -372,10 +369,13 @@ const ContactForm = ({ sectionRef, showSection }) => {
       {/* QR Modal */}
       {showQRModal && (
         <div className={style.qrModal} onClick={() => setShowQRModal(false)}>
-          <div className={style.qrModal__content} onClick={(e) => e.stopPropagation()}>
+          <div
+            className={style.qrModal__content}
+            onClick={(e) => e.stopPropagation()}
+          >
             <div className={style.qrModal__header}>
               <h3>Gửi Quà Mừng Cưới</h3>
-              <button 
+              <button
                 className={style.qrModal__close}
                 onClick={() => setShowQRModal(false)}
               >
@@ -386,17 +386,17 @@ const ContactForm = ({ sectionRef, showSection }) => {
               <div className={style.qrModal__qrContainer}>
                 <div className={style.qrModal__qrItem}>
                   <h4>Chú Rể</h4>
-                  <img 
-                    src={getAssetUrl('/assets/img/qr/husband.jpg')} 
-                    alt="QR Code Chú Rể" 
+                  <img
+                    src={getAssetUrl("/assets/img/qr/husband.jpg")}
+                    alt="QR Code Chú Rể"
                     className={style.qrModal__qrImage}
                   />
                 </div>
                 <div className={style.qrModal__qrItem}>
                   <h4>Cô Dâu</h4>
-                  <img 
-                    src={getAssetUrl('img/qr/wife.jpg')} 
-                    alt="QR Code Cô Dâu" 
+                  <img
+                    src={getAssetUrl("img/qr/wife.jpg")}
+                    alt="QR Code Cô Dâu"
                     className={style.qrModal__qrImage}
                   />
                 </div>

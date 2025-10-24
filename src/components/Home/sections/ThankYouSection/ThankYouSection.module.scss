@@ -50,6 +50,16 @@ $border-radius: 15px;
     }
   }
 
+  &__title {
+    font-family: "Great Vibes", cursive;
+    font-size: 5rem;
+    font-weight: 700;
+    color: $color-white;
+    text-shadow: 3px 3px 10px rgba(0, 0, 0, 0.8);
+    margin-bottom: 30px;
+    letter-spacing: 3px;
+  }
+
   &__text {
     background: transparent;
     padding: 40px;
@@ -84,10 +94,15 @@ $border-radius: 15px;
 
     &__content {
       padding: 0 15px;
+    }
 
-      h2 {
-        font-size: 2rem;
-      }
+    &__title {
+      font-size: 3rem;
+      letter-spacing: 2px;
+    }
+
+    &__text {
+      padding: 20px;
 
       p {
         font-size: 1rem;

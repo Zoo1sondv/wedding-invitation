@@ -96,7 +96,7 @@ const EventCalendarSection = ({ sectionRef, showSection }) => {
                 alt="heart deep"
                 className={style.legend_heart_deep}
               />
-              <span>Ngày 10/11 - Lễ Vu Quy và Lễ Thành Hôn</span>
+              <span>Ngày 10/11 - Lễ Vu Quy & Lễ Thành Hôn</span>
             </div>
           </div>
         </div>

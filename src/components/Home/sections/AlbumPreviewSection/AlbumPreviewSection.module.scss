@@ -6,16 +6,13 @@ $transition-smooth: all 1.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  margin-top: 50px;
 
-  &__content {
-    &__text {
-      margin: 20px 10px;
-      font-size: 1.2rem;
-      font-weight: 400;
-      text-align: justify;
-      text-justify: inter-word;
-    }
+  &__text {
+    margin: 20px 10px;
+    font-size: 1.2rem;
+    font-weight: 400;
+    text-align: justify;
+    text-justify: inter-word;
   }
 
   &__image {

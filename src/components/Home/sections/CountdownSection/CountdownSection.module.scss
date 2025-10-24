@@ -9,11 +9,10 @@ $shadow-box: 0 0 20px 0 rgba(0, 0, 0, 0.3);
 $border-radius: 12px;
 
 .countdownSection {
-  background-size: cover;
+  background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
-  padding: 80px 0;
-  min-height: 100vh;
+  padding: 104px 0;
   display: flex;
   align-items: center;
   position: relative;
@@ -53,7 +52,7 @@ $border-radius: 12px;
 
     h2 {
       font-size: 4rem;
-      color: $color-white;
+      color: #ffe4e4;
       text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8);
       font-family: "Dancing Script", cursive;
       font-weight: 400;
@@ -72,7 +71,7 @@ $border-radius: 12px;
   }
 
   &__timeUnit {
-    background: rgba(255, 255, 255, 0.9);
+    background: rgba(255, 255, 255, 0.2);
     padding: 25px 15px;
     border-radius: 10px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
@@ -82,14 +81,14 @@ $border-radius: 12px;
   &__number {
     font-size: 3rem;
     font-weight: bold;
-    color: #333;
+    color: #ffe4e4;
     font-family: "Arial", sans-serif;
     line-height: 1;
   }
 
   &__label {
     font-size: 0.9rem;
-    color: #666;
+    color: #ffe4e4;
     font-weight: 600;
     text-transform: uppercase;
     margin-top: 8px;

@@ -6,6 +6,7 @@ import InvitationSection from "./sections/InvitationSection";
 import InformationSection from "./sections/InformationSection";
 import EventCalendarSection from "./sections/EventCalendarSection";
 import LocationSection from "./sections/LocationSection";
+import WeddingCeremony from "./sections/WeddingCeremony";
 import AlbumPreviewSection from "./sections/AlbumPreviewSection";
 import AlbumSliderSection from "./sections/AlbumSliderSection";
 import VideoSection from "./sections/VideoSection";
@@ -18,19 +19,33 @@ import style from "./home.module.scss";
 const Home = () => {
   // Scroll animation hooks for each section
   const [heroRef, showHero] = useScrollAnimation({ threshold: 0.3 });
-  const [invitationRef, showInvitation] = useScrollAnimation({ threshold: 0.3 });
-  const [informationRef, showInformation] = useScrollAnimation({ threshold: 0.3 });
+  const [invitationRef, showInvitation] = useScrollAnimation({
+    threshold: 0.3,
+  });
+  const [informationRef, showInformation] = useScrollAnimation({
+    threshold: 0.3,
+  });
   const [locationRef, showLocation] = useScrollAnimation({ threshold: 0.3 });
   const [calendarRef, showCalendar] = useScrollAnimation({ threshold: 0.3 });
-  const [albumPreviewRef, showAlbumPreview] = useScrollAnimation({ threshold: 0.3 });
-  const [albumSliderRef, showAlbumSlider] = useScrollAnimation({ threshold: 0.3 });
+  const [weddingCeremonyRef, showWeddingCeremony] = useScrollAnimation({
+    threshold: 0.3,
+  });
+  const [albumPreviewRef, showAlbumPreview] = useScrollAnimation({
+    threshold: 0.3,
+  });
+  const [albumSliderRef, showAlbumSlider] = useScrollAnimation({
+    threshold: 0.3,
+  });
   const [videoRef, showVideo] = useScrollAnimation({ threshold: 0.3 });
-  const [contactFormRef, showContactForm] = useScrollAnimation({ threshold: 0.3 });
+  const [contactFormRef, showContactForm] = useScrollAnimation({
+    threshold: 0.3,
+  });
   const [countdownRef, showCountdown] = useScrollAnimation({ threshold: 0.3 });
   const [thankYouRef, showThankYou] = useScrollAnimation({ threshold: 0.3 });
 
   // Album images
   const albumImages = [
+    getAssetUrl("/assets/img/0F9A0024.jpg"),
     getAssetUrl("/assets/img/0F9A0090.jpg"),
     getAssetUrl("/assets/img/0F9A0111.jpg"),
     getAssetUrl("/assets/img/0F9A0175.jpg"),
@@ -41,18 +56,22 @@ const Home = () => {
     getAssetUrl("/assets/img/0F9A0530.jpg"),
     getAssetUrl("/assets/img/0F9A0567.jpg"),
     getAssetUrl("/assets/img/0F9A0625.jpg"),
+    getAssetUrl("/assets/img/0F9A0704.jpg"),
     getAssetUrl("/assets/img/0F9A0754.jpg"),
     getAssetUrl("/assets/img/0F9A0785.jpg"),
     getAssetUrl("/assets/img/0F9A0867.jpg"),
     getAssetUrl("/assets/img/0F9A0912.jpg"),
+    getAssetUrl("/assets/img/0F9A1130.jpg"),
     getAssetUrl("/assets/img/0F9A1373.jpg"),
     getAssetUrl("/assets/img/0F9A1614.jpg"),
+    getAssetUrl("/assets/img/0F9A1826.jpg"),
     getAssetUrl("/assets/img/0F9A6199.jpg"),
     getAssetUrl("/assets/img/0F9A6237.jpg"),
     getAssetUrl("/assets/img/0F9A6267.jpg"),
     getAssetUrl("/assets/img/0F9A6312.jpg"),
     getAssetUrl("/assets/img/0F9A6359.jpg"),
     getAssetUrl("/assets/img/0F9A6366.jpg"),
+    getAssetUrl("/assets/img/0F9A6398.jpg"),
     getAssetUrl("/assets/img/0F9A6438.jpg"),
     getAssetUrl("/assets/img/0F9A6634.jpg"),
     getAssetUrl("/assets/img/0F9A6676.jpg"),
@@ -115,36 +134,35 @@ const Home = () => {
 
   return (
     <div className={style.home}>
-      <HeroSection 
-        sectionRef={heroRef} 
-        showSection={showHero} 
+      <HeroSection sectionRef={heroRef} showSection={showHero} />
+
+      <InvitationSection
+        sectionRef={invitationRef}
+        showSection={showInvitation}
       />
-      
-      <InvitationSection 
-        sectionRef={invitationRef} 
-        showSection={showInvitation} 
+
+      <InformationSection
+        sectionRef={informationRef}
+        showSection={showInformation}
       />
-      
-      <InformationSection 
-        sectionRef={informationRef} 
-        showSection={showInformation} 
+
+      <EventCalendarSection
+        sectionRef={calendarRef}
+        showSection={showCalendar}
       />
-      
-      <EventCalendarSection 
-        sectionRef={calendarRef} 
-        showSection={showCalendar} 
+
+      <LocationSection sectionRef={locationRef} showSection={showLocation} />
+
+      <WeddingCeremony
+        sectionRef={weddingCeremonyRef}
+        showSection={showWeddingCeremony}
       />
-      
-      <LocationSection 
-        sectionRef={locationRef} 
-        showSection={showLocation} 
+
+      <AlbumPreviewSection
+        sectionRef={albumPreviewRef}
+        showSection={showAlbumPreview}
       />
-      
-      <AlbumPreviewSection 
-        sectionRef={albumPreviewRef} 
-        showSection={showAlbumPreview} 
-      />
-      
+
       <AlbumSliderSection
         sectionRef={albumSliderRef}
         showSection={showAlbumSlider}
@@ -152,25 +170,13 @@ const Home = () => {
         onImageClick={handleImageClick}
       />
 
-      <VideoSection
-        sectionRef={videoRef}
-        showSection={showVideo}
-      />
+      <VideoSection sectionRef={videoRef} showSection={showVideo} />
 
-      <ContactForm
-        sectionRef={contactFormRef}
-        showSection={showContactForm}
-      />
+      <ContactForm sectionRef={contactFormRef} showSection={showContactForm} />
 
-      <CountdownSection
-        sectionRef={countdownRef}
-        showSection={showCountdown}
-      />
+      <CountdownSection sectionRef={countdownRef} showSection={showCountdown} />
 
-      <ThankYouSection
-        sectionRef={thankYouRef}
-        showSection={showThankYou}
-      />
+      <ThankYouSection sectionRef={thankYouRef} showSection={showThankYou} />
 
       <ImageModal
         isOpen={isModalOpen}
