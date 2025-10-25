@@ -27,6 +27,13 @@ const ContactForm = ({ sectionRef, showSection }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    // If there's an error status, reset it and allow retry
+    if (submitStatus === "error") {
+      setSubmitStatus(null);
+      return;
+    }
+
     setIsSubmitting(true);
 
     try {
@@ -105,12 +112,12 @@ const ContactForm = ({ sectionRef, showSection }) => {
         guestOf: "",
       });
 
-      // Reset status after 3 seconds
-      setTimeout(() => setSubmitStatus(null), 3000);
+      // Reset success status after 5 seconds
+      setTimeout(() => setSubmitStatus(null), 5000);
     } catch (error) {
       console.error("Form submission error:", error);
       setSubmitStatus("error");
-      setTimeout(() => setSubmitStatus(null), 3000);
+      // Keep error message visible (don't auto-hide)
     } finally {
       setIsSubmitting(false);
     }
@@ -344,7 +351,7 @@ const ContactForm = ({ sectionRef, showSection }) => {
                 ) : submitStatus === "success" ? (
                   <>✓ Đã gửi thành công!</>
                 ) : submitStatus === "error" ? (
-                  <>✗ Có lỗi xảy ra, vui lòng thử lại</>
+                  <>🔄 Nhấn để thử lại</>
                 ) : (
                   <>GỬI LỜI NHẮN & XÁC NHẬN</>
                 )}
@@ -368,6 +375,50 @@ const ContactForm = ({ sectionRef, showSection }) => {
                   🎉 Cảm ơn bạn đã xác nhận! Chúng tôi rất mong được gặp bạn
                   trong ngày đặc biệt này.
                 </p>
+              </div>
+            )}
+
+            {submitStatus === "error" && (
+              <div className={style.contactForm__error}>
+                <button
+                  type="button"
+                  className={style.contactForm__error_close}
+                  onClick={() => setSubmitStatus(null)}
+                  aria-label="Đóng thông báo"
+                >
+                  ✕
+                </button>
+                <p className={style.contactForm__error_title}>
+                  ❌ Gửi không thành công!
+                </p>
+                <p className={style.contactForm__error_message}>
+                  Xin lỗi, có lỗi xảy ra khi gửi thông tin. Vui lòng liên hệ
+                  trực tiếp:
+                </p>
+                <div className={style.contactForm__error_contacts}>
+                  <div className={style.contactForm__error_contact}>
+                    <span className={style.contactForm__error_label}>
+                      📱 Cô Dâu:
+                    </span>
+                    <a
+                      href="tel:0388088021"
+                      className={style.contactForm__error_phone}
+                    >
+                      0388 088 021
+                    </a>
+                  </div>
+                  <div className={style.contactForm__error_contact}>
+                    <span className={style.contactForm__error_label}>
+                      📱 Chú Rể:
+                    </span>
+                    <a
+                      href="tel:0347200992"
+                      className={style.contactForm__error_phone}
+                    >
+                      0347 200 992
+                    </a>
+                  </div>
+                </div>
               </div>
             )}
           </form>
@@ -399,6 +450,13 @@ const ContactForm = ({ sectionRef, showSection }) => {
                     alt="QR Code Chú Rể"
                     className={style.qrModal__qrImage}
                   />
+                  <div className={style.qrModal__bankInfo}>
+                    <p className={style.qrModal__bankName}>🏦 Vietcombank</p>
+                    <p className={style.qrModal__accountNumber}>
+                      STK: <strong>9347200992</strong>
+                    </p>
+                    <p className={style.qrModal__accountName}>DOAN VAN SON</p>
+                  </div>
                 </div>
                 <div className={style.qrModal__qrItem}>
                   <h4>Cô Dâu</h4>
@@ -407,6 +465,15 @@ const ContactForm = ({ sectionRef, showSection }) => {
                     alt="QR Code Cô Dâu"
                     className={style.qrModal__qrImage}
                   />
+                  <div className={style.qrModal__bankInfo}>
+                    <p className={style.qrModal__bankName}>🏦 Vietcombank</p>
+                    <p className={style.qrModal__accountNumber}>
+                      STK: <strong>1029791786</strong>
+                    </p>
+                    <p className={style.qrModal__accountName}>
+                      NGUYEN THI THUY
+                    </p>
+                  </div>
                 </div>
               </div>
               <div className={style.qrModal__note}>

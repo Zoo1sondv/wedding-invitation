@@ -68,7 +68,7 @@
 
     h1 {
       font-family: "Great Vibes", cursive;
-      @include fluid-font(2rem, 5rem);
+      font-size: $h2-mobile;
       font-weight: 700;
       text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
       margin-bottom: clamp(8px, 1.5vw, 15px);
@@ -77,19 +77,18 @@
     }
 
     h3 {
-      @include fluid-font(1.1rem, 2rem);
+      font-size: $h3-mobile;
       font-weight: 400;
       text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.7);
       margin: 0;
     }
 
     p {
-      @include fluid-font(0.95rem, 1.5rem);
+      font-size: $body-mobile;
       font-style: italic;
       opacity: 0.9;
       text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.7);
       margin: 0;
-      max-width: 90%;
     }
   }
 
@@ -146,16 +145,16 @@
       gap: 10px;
 
       h1 {
-        font-size: 2rem;
+        font-size: 2.5rem;
         letter-spacing: 4px;
       }
 
       h3 {
-        font-size: 1.1rem;
+        font-size: 2rem;
       }
 
       p {
-        font-size: 0.95rem;
+        font-size: $body-mobile;
       }
     }
 
@@ -209,17 +208,17 @@
       gap: 18px;
 
       h1 {
-        font-size: 5.5rem;
+        font-size: $h2-desktop;
         letter-spacing: 10px;
         margin-bottom: 15px;
       }
 
       h3 {
-        font-size: 2.2rem;
+        font-size: $h3-desktop;
       }
 
       p {
-        font-size: 1.6rem;
+        font-size: $body-desktop;
       }
     }
 
@@ -251,19 +250,20 @@
 @include min-xxl {
   .ceremony {
     padding: 90px 50px;
+    background-position: center 30%;
 
     &__item {
       h1 {
-        font-size: 6rem;
+        font-size: $h2-xxl;
         letter-spacing: 12px;
       }
 
       h3 {
-        font-size: 2.5rem;
+        font-size: $h3-xxl;
       }
 
       p {
-        font-size: 1.8rem;
+        font-size: $body-xxl;
       }
     }
 

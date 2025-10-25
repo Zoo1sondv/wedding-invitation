@@ -11,6 +11,7 @@ $shadow-text: 2px 2px 4px rgba(0, 0, 0, 0.5);
   min-height: 100vh;
   background-size: cover;
   background-position: center;
+  background-attachment: fixed;
   margin-top: clamp(40px, 6vw, 80px);
   padding: clamp(40px, 6vw, 80px) 0;
 
@@ -34,7 +35,7 @@ $shadow-text: 2px 2px 4px rgba(0, 0, 0, 0.5);
 
   &__month {
     font-family: "Great Vibes", cursive;
-    @include fluid-font(2.5rem, 5rem);
+    font-size: $h1-mobile;
     text-align: center;
     color: $color-white;
     text-shadow: $shadow-text;
@@ -121,7 +122,7 @@ $shadow-text: 2px 2px 4px rgba(0, 0, 0, 0.5);
     margin-top: clamp(30px, 5vw, 50px);
     display: flex;
     flex-direction: column;
-    gap: clamp(8px, 1.5vw, 12px);
+    gap: clamp(15px, 1.5vw, 12px);
     background: rgba(0, 0, 0, 0.4);
     padding: clamp(12px, 2vw, 18px) clamp(18px, 3vw, 28px);
     border-radius: clamp(10px, 1.5vw, 15px);
@@ -130,7 +131,7 @@ $shadow-text: 2px 2px 4px rgba(0, 0, 0, 0.5);
     .legend_item {
       display: flex;
       align-items: center;
-      gap: clamp(8px, 1.5vw, 12px);
+      gap: clamp(15px, 2vw, 20px);
       color: $color-white;
       @include fluid-font(0.95rem, 1.2rem);
       text-shadow: $shadow-text;
@@ -161,6 +162,7 @@ $shadow-text: 2px 2px 4px rgba(0, 0, 0, 0.5);
 // Mobile optimization
 @include max-sm {
   .calendar {
+    background-attachment: scroll; // Fixed không hoạt động tốt trên mobile
     margin-top: 35px;
     padding: 35px 0;
 
@@ -237,7 +239,7 @@ $shadow-text: 2px 2px 4px rgba(0, 0, 0, 0.5);
       margin-bottom: 22px;
 
       div {
-        font-size: 1.1rem;
+        font-size: 2.1rem;
         letter-spacing: 1.5px;
       }
     }
@@ -246,7 +248,7 @@ $shadow-text: 2px 2px 4px rgba(0, 0, 0, 0.5);
       gap: 14px;
 
       div {
-        font-size: 1.4rem;
+        font-size: 2.4rem;
 
         &:not(.empty):hover {
           transform: scale(1.1);
@@ -256,7 +258,7 @@ $shadow-text: 2px 2px 4px rgba(0, 0, 0, 0.5);
 
       .intimate_party_day,
       .wedding_day {
-        font-size: 1.8rem;
+        font-size: 2.8rem;
 
         .heart {
           font-size: 6.5rem;
@@ -268,15 +270,15 @@ $shadow-text: 2px 2px 4px rgba(0, 0, 0, 0.5);
     &__legend {
       margin-top: 55px;
       padding: 20px 32px;
-      gap: 14px;
+      gap: 20px;
 
       .legend_item {
-        font-size: 1.3rem;
+        font-size: 2.3rem;
       }
 
       .legend_heart_light,
       .legend_heart_deep {
-        font-size: 2.8rem;
+        font-size: 3.8rem;
       }
     }
   }
@@ -295,15 +297,16 @@ $shadow-text: 2px 2px 4px rgba(0, 0, 0, 0.5);
 
     &__grid {
       div {
-        font-size: 1.5rem;
+        font-size: 2.5rem;
       }
 
       .intimate_party_day,
       .wedding_day {
-        font-size: 2rem;
+        font-size: 3rem;
 
         .heart {
           font-size: 7rem;
+          bottom: 12px;
         }
       }
     }

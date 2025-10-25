@@ -2,14 +2,16 @@
 @use "../../../../styles/variables.scss" as *;
 
 .thankYouSection {
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  padding: clamp(60px, 10vw, 120px) 0;
-  min-height: 100vh;
+  position: relative;
   display: flex;
   align-items: center;
-  position: relative;
+  justify-content: center;
+  min-height: 100vh;
+  background-size: cover;
+  background-position: center 25%;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  padding: clamp(60px, 10vw, 120px) 0;
 
   &::before {
     content: "";
@@ -29,18 +31,19 @@
     padding: 0 clamp(15px, 3vw, 40px);
     text-align: center;
     position: relative;
+    margin-top: 400px;
     z-index: 1;
   }
 
   &__title {
     font-family: "Great Vibes", cursive;
-    @include fluid-font(2.5rem, 6rem);
+    font-size: $h1-mobile;
     font-weight: 700;
     color: $color-white;
     text-shadow: 3px 3px 10px rgba(0, 0, 0, 0.8);
     margin-bottom: clamp(20px, 3vw, 40px);
     letter-spacing: clamp(2px, 0.5vw, 4px);
-    margin-top: 0;
+    margin-top: 10px;
     @include zoomIn;
   }
 
@@ -51,14 +54,13 @@
     @include slideUpFade;
 
     p {
-      @include fluid-font(1rem, 1.8rem);
+      font-size: $body-mobile;
       color: $color-white;
       line-height: 1.8;
       margin-bottom: clamp(20px, 3vw, 35px);
       text-align: center;
       text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
       font-weight: 500;
-      max-width: 90%;
       margin-left: auto;
       margin-right: auto;
 
@@ -70,7 +72,7 @@
 
   &__signature {
     margin-top: clamp(15px, 2vw, 25px);
-    @include fluid-font(2rem, 4.5rem);
+    font-size: $large-mobile;
     color: $color-white;
     font-family: "Dancing Script", cursive;
     font-weight: 700;
@@ -82,6 +84,7 @@
 // Mobile optimization
 @include max-sm {
   .thankYouSection {
+    background-attachment: scroll; // Fixed không hoạt động tốt trên mobile
     padding: 50px 0;
 
     &__content {
@@ -89,7 +92,7 @@
     }
 
     &__title {
-      font-size: 2.5rem;
+      font-size: $h1-mobile;
       letter-spacing: 2px;
       margin-bottom: 18px;
     }
@@ -98,13 +101,13 @@
       padding: 20px;
 
       p {
-        font-size: 1rem;
+        font-size: $body-mobile;
         margin-bottom: 18px;
       }
     }
 
     &__signature {
-      font-size: 2rem;
+      font-size: $large-mobile;
       margin-top: 12px;
     }
   }
@@ -120,7 +123,7 @@
     }
 
     &__title {
-      font-size: 7rem;
+      font-size: $h1-desktop;
       letter-spacing: 5px;
       margin-bottom: 45px;
     }
@@ -129,14 +132,14 @@
       padding: 60px;
 
       p {
-        font-size: 2rem;
+        font-size: $body-desktop;
         line-height: 2;
         margin-bottom: 40px;
       }
     }
 
     &__signature {
-      font-size: 5rem;
+      font-size: $large-desktop;
       margin-top: 30px;
     }
   }
@@ -150,17 +153,17 @@
     }
 
     &__title {
-      font-size: 7.5rem;
+      font-size: $h1-xxl;
     }
 
     &__text {
       p {
-        font-size: 2.2rem;
+        font-size: $body-xxl;
       }
     }
 
     &__signature {
-      font-size: 5.5rem;
+      font-size: $large-xxl;
     }
   }
 }

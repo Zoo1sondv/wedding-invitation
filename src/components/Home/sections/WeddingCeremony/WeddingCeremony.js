@@ -54,7 +54,7 @@ const WeddingCeremony = ({ sectionRef, showSection }) => {
             <h1>Lễ Thành Hôn</h1>
             <h3>Thứ Hai - 10:00</h3>
             <div className={style.ceremony__date}>
-              <h3>Tháng 03</h3>
+              <h3>Tháng 11</h3>
               <div className={style.ceremony__slash} />
               <h3>10</h3>
               <div className={style.ceremony__slash} />
@@ -79,7 +79,7 @@ const WeddingCeremony = ({ sectionRef, showSection }) => {
             <h1>Lễ Vu Quy</h1>
             <h3>Thứ Hai - 07:00</h3>
             <div className={style.ceremony__date}>
-              <h3>Tháng 03</h3>
+              <h3>Tháng 11</h3>
               <div className={style.ceremony__slash} />
               <h3>10</h3>
               <div className={style.ceremony__slash} />

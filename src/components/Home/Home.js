@@ -7,7 +7,6 @@ import InformationSection from "./sections/InformationSection";
 import EventCalendarSection from "./sections/EventCalendarSection";
 import LocationSection from "./sections/LocationSection";
 import WeddingCeremony from "./sections/WeddingCeremony";
-import AlbumPreviewSection from "./sections/AlbumPreviewSection";
 import AlbumSliderSection from "./sections/AlbumSliderSection";
 import VideoSection from "./sections/VideoSection";
 import ImageModal from "./sections/ImageModal";
@@ -27,9 +26,6 @@ const Home = () => {
   const [locationRef, showLocation] = useScrollAnimation({ threshold: 0.3 });
   const [calendarRef, showCalendar] = useScrollAnimation({ threshold: 0.3 });
   const [weddingCeremonyRef, showWeddingCeremony] = useScrollAnimation({
-    threshold: 0.3,
-  });
-  const [albumPreviewRef, showAlbumPreview] = useScrollAnimation({
     threshold: 0.3,
   });
   const [albumSliderRef, showAlbumSlider] = useScrollAnimation({
@@ -153,11 +149,6 @@ const Home = () => {
       <WeddingCeremony
         sectionRef={weddingCeremonyRef}
         showSection={showWeddingCeremony}
-      />
-
-      <AlbumPreviewSection
-        sectionRef={albumPreviewRef}
-        showSection={showAlbumPreview}
       />
 
       <AlbumSliderSection

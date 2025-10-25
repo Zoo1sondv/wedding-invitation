@@ -4,34 +4,43 @@
 $shadow-text: 2px 2px 4px rgba(0, 0, 0, 0.5);
 
 .hero {
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  position: relative;
   min-height: 100vh;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
 
-  &__image {
-    width: 100%;
-    height: 100vh;
-    object-fit: cover;
-    object-position: center;
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.3);
+    pointer-events: none;
   }
 
   &__content {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
     position: absolute;
     bottom: 5%;
     left: 0;
     right: 0;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     padding: 0 20px;
     @include zoomIn;
 
     h1 {
-      @include fluid-font(2.5rem, 6rem);
+      font-size: $h1-mobile;
       font-weight: 600;
       color: $color-white;
       font-family: "Great Vibes", cursive;
@@ -41,13 +50,12 @@ $shadow-text: 2px 2px 4px rgba(0, 0, 0, 0.5);
     }
 
     p {
-      @include fluid-font(1rem, 2rem);
+      font-size: $large-mobile;
       font-weight: 400;
       color: $color-white;
       text-shadow: $shadow-text;
       margin: 0.5rem 0 1rem;
       text-align: center;
-      max-width: 90%;
     }
   }
 }
@@ -55,15 +63,17 @@ $shadow-text: 2px 2px 4px rgba(0, 0, 0, 0.5);
 // Responsive adjustments
 @include max-sm {
   .hero {
+    background-attachment: scroll;
+
     &__content {
       bottom: 10%;
 
       h1 {
-        font-size: 2.5rem;
+        font-size: $h1-mobile;
       }
 
       p {
-        font-size: 1rem;
+        font-size: $large-mobile;
         margin: 0.5rem 0;
       }
     }
@@ -74,21 +84,31 @@ $shadow-text: 2px 2px 4px rgba(0, 0, 0, 0.5);
   .hero {
     &__content {
       bottom: 8%;
+
+      h1 {
+        font-size: $h1-desktop;
+      }
+
+      p {
+        font-size: $large-desktop;
+      }
     }
   }
 }
 
 @include min-xxl {
   .hero {
+    background-position: center 40%;
+
     &__content {
       bottom: 10%;
 
       h1 {
-        font-size: 7rem;
+        font-size: $h1-xxl;
       }
 
       p {
-        font-size: 2.5rem;
+        font-size: $large-xxl;
       }
     }
   }

@@ -4,7 +4,10 @@ import style from "./CountdownSection.module.scss";
 import { getAssetUrl } from "../../../../utils/config";
 
 const CountdownSection = ({ sectionRef, showSection }) => {
-  const weddingDate = React.useMemo(() => new Date("2025-11-10T10:00:00"), []);
+  const weddingDate = React.useMemo(
+    () => new Date("2025-11-10T10:00:00+07:00"),
+    []
+  );
 
   const [timeLeft, setTimeLeft] = useState({
     days: 0,

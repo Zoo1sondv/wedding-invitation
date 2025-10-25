@@ -10,7 +10,7 @@ const VideoSection = ({ sectionRef, showSection }) => {
       <div className={style.videoSection__container}>
         <div className={style.videoSection__content}>
           <div className={style.videoSection__header}>
-            <h2>Lễ Cưới Hôn Phối Trong Nhà Thờ</h2>
+            <h2>Thánh Lễ Hôn Phối</h2>
             <p>
               Hãy cùng chúng mình xem lại những khoảnh khắc thiêng liêng và
               tuyệt đẹp trong ngày trọng đại của chúng mình

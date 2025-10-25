@@ -178,6 +178,41 @@ $container-xxl: 1320px;
 }
 
 // ==========================================
+// 🔤 TYPOGRAPHY SYSTEM - Unified Font Sizes
+// ==========================================
+
+// Heading sizes for different breakpoints
+// H1 - Main titles (Hero, Section titles)
+$h1-mobile: 4rem; // ~56px
+$h1-desktop: 8rem; // ~112px
+$h1-xxl: 12rem; // ~176px
+
+// H2 - Secondary titles
+$h2-mobile: 3.5rem; // ~40px
+$h2-desktop: 6rem; // ~80px
+$h2-xxl: 7rem; // ~96px
+
+// H3 - Sub-headings
+$h3-mobile: 3rem; // ~29px
+$h3-desktop: 3.5rem; // ~56px
+$h3-xxl: 4rem; // ~64px
+
+// Body text
+$body-mobile: 1rem; // ~16px
+$body-desktop: 1.4rem; // ~22px
+$body-xxl: 2.6rem; // ~26px
+
+// Small text
+$small-mobile: 1.3rem; // ~14px
+$small-desktop: 2rem; // ~19px
+$small-xxl: 2.5rem; // ~21px
+
+// Large text (paragraphs in hero, ceremony)
+$large-mobile: 2rem; // ~24px
+$large-desktop: 3rem; // ~40px
+$large-xxl: 4rem; // ~48px
+
+// ==========================================
 // 🎨 COLORS (existing)
 // ==========================================
 

@@ -35,11 +35,13 @@ const InvitationSection = ({ sectionRef, showSection }) => {
               <p>Chú Rể</p>
               ĐOÀN SƠN
             </div>
-            <img
+            <div
               className={style.person__image}
-              src={getAssetUrl("/assets/img/0F9A0024.jpg")}
-              alt="Groom"
-              loading="lazy"
+              style={{
+                backgroundImage: `url(${getAssetUrl("/assets/img/0F9A0024.jpg")})`,
+              }}
+              role="img"
+              aria-label="Groom"
             />
           </div>
 
@@ -48,11 +50,13 @@ const InvitationSection = ({ sectionRef, showSection }) => {
               [style.show]: showSection,
             })}
           >
-            <img
+            <div
               className={style.person__image}
-              src={getAssetUrl("/assets/img/0F9A0704.jpg")}
-              alt="Bride"
-              loading="lazy"
+              style={{
+                backgroundImage: `url(${getAssetUrl("/assets/img/0F9A0704.jpg")})`,
+              }}
+              role="img"
+              aria-label="Bride"
             />
             <div className={style.person__name}>
               <p>Cô Dâu</p>

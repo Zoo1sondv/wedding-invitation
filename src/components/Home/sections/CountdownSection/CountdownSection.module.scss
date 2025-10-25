@@ -2,15 +2,17 @@
 @use "../../../../styles/variables.scss" as *;
 
 .countdownSection {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 60vh;
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
+  background-attachment: fixed;
   padding: clamp(60px, 10vw, 120px) 0;
-  display: flex;
-  align-items: center;
-  position: relative;
   overflow: hidden;
-  min-height: 60vh;
 
   &::before {
     content: "";
@@ -38,7 +40,7 @@
     margin-bottom: clamp(30px, 5vw, 60px);
 
     h2 {
-      @include fluid-font(2rem, 5rem);
+      font-size: $h2-mobile;
       color: #ffe4e4;
       text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8);
       font-family: "Dancing Script", cursive;
@@ -130,6 +132,7 @@
 // Mobile adjustments
 @include max-sm {
   .countdownSection {
+    background-attachment: scroll; // Fixed không hoạt động tốt trên mobile
     padding: 50px 0;
 
     &__content {
@@ -164,7 +167,8 @@
 // Desktop enhancements
 @include min-lg {
   .countdownSection {
-    padding: 100px 0;
+    padding: 400px 0;
+    background-position: center 30%;
 
     &__content {
       max-width: 1400px;

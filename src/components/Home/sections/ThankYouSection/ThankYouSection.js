@@ -20,7 +20,7 @@ const ThankYouSection = ({ sectionRef, showSection }) => {
           >
             <p>
               Cảm ơn bạn đã dành tình cảm cho chúng mình! sự hiện diện của bạn
-              chính là món quà nghĩa nhất, và chúng mình vô cùng trân quý khi
+              chính là món quà ý nghĩa nhất, và chúng mình vô cùng trân quý khi
               được cùng bạn chia sẻ niềm hạnh phúc trong ngày trọng đại này.
             </p>
           </div>

@@ -223,8 +223,8 @@ $border-radius: 12px;
       }
 
       p {
-        font-size: 1.7rem;
-        max-width: 900px;
+        font-size: 2.7rem;
+        max-width: 1200px;
       }
     }
 
@@ -237,16 +237,16 @@ $border-radius: 12px;
     }
 
     &__description {
-      max-width: 800px;
+      max-width: 1200px;
 
       p {
-        font-size: 1.5rem;
+        font-size: 2.5rem;
       }
     }
 
     &__ytButton {
       padding: 20px 40px;
-      font-size: 1.4rem;
+      font-size: 2.4rem;
 
       &:hover {
         transform: translateY(-3px) scale(1.08);

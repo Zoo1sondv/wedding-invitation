@@ -6,13 +6,12 @@ import style from "./HeroSection.module.scss";
 const HeroSection = ({ sectionRef, showSection }) => {
   return (
     <section id="home" ref={sectionRef}>
-      <div className={style.hero}>
-        <img
-          className={style.hero__image}
-          src={getAssetUrl("/assets/img/0F9A1826.jpg")}
-          alt="Wedding couple"
-          loading="eager"
-        />
+      <div
+        className={style.hero}
+        style={{
+          backgroundImage: `url(${getAssetUrl("/assets/img/0F9A1826.jpg")})`,
+        }}
+      >
         <div
           className={clsx(style.hero__content, {
             [style.show]: showSection,
