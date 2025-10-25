@@ -109,11 +109,11 @@ $shadow-text: 2px 2px 4px rgba(0, 0, 0, 0.5);
       }
 
       .heart_light {
-        color: #ff69b4;
+        color: #ffc8e4;
       }
 
       .heart_deep {
-        color: #dc143c;
+        color: #f56782;
       }
     }
   }
@@ -139,12 +139,12 @@ $shadow-text: 2px 2px 4px rgba(0, 0, 0, 0.5);
 
     .legend_heart_light {
       font-size: clamp(1.8rem, 3vw, 2.5rem);
-      color: #ff69b4;
+      color: #ffc8e4;
     }
 
     .legend_heart_deep {
       font-size: clamp(1.8rem, 3vw, 2.5rem);
-      color: #dc143c;
+      color: #f56782;
     }
   }
 }

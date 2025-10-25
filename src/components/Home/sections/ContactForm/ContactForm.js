@@ -351,7 +351,7 @@ const ContactForm = ({ sectionRef, showSection }) => {
                 ) : submitStatus === "success" ? (
                   <>✓ Đã gửi thành công!</>
                 ) : submitStatus === "error" ? (
-                  <>🔄 Nhấn để thử lại</>
+                  <>Nhấn để thử lại</>
                 ) : (
                   <>GỬI LỜI NHẮN & XÁC NHẬN</>
                 )}
@@ -389,7 +389,7 @@ const ContactForm = ({ sectionRef, showSection }) => {
                   ✕
                 </button>
                 <p className={style.contactForm__error_title}>
-                  ❌ Gửi không thành công!
+                  Gửi không thành công!
                 </p>
                 <p className={style.contactForm__error_message}>
                   Xin lỗi, có lỗi xảy ra khi gửi thông tin. Vui lòng liên hệ
@@ -398,7 +398,7 @@ const ContactForm = ({ sectionRef, showSection }) => {
                 <div className={style.contactForm__error_contacts}>
                   <div className={style.contactForm__error_contact}>
                     <span className={style.contactForm__error_label}>
-                      📱 Cô Dâu:
+                      Cô Dâu:
                     </span>
                     <a
                       href="tel:0388088021"
@@ -409,7 +409,7 @@ const ContactForm = ({ sectionRef, showSection }) => {
                   </div>
                   <div className={style.contactForm__error_contact}>
                     <span className={style.contactForm__error_label}>
-                      📱 Chú Rể:
+                      Chú Rể:
                     </span>
                     <a
                       href="tel:0347200992"
@@ -461,7 +461,7 @@ const ContactForm = ({ sectionRef, showSection }) => {
                 <div className={style.qrModal__qrItem}>
                   <h4>Cô Dâu</h4>
                   <img
-                    src={getAssetUrl("img/qr/wife.jpg")}
+                    src={getAssetUrl("/assets/img/qr/wife.jpg")}
                     alt="QR Code Cô Dâu"
                     className={style.qrModal__qrImage}
                   />

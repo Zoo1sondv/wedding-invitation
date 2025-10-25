@@ -54,9 +54,9 @@ const LocationSection = ({ sectionRef, showSection }) => {
               <h3 className={"my-4"}>TẠI TƯ GIA NHÀ GÁI</h3>
               <p>(Nhằm Ngày 20 Tháng 09 Năm Ất Tỵ)</p>
               <p className={style.location__address}>
-                121 Ngõ 1, Tổ 2, L.Đa Sỹ, P.Kiến Hưng
+                121 Ngõ 1, Tổ 2, L.Đa Sỹ
                 <br />
-                TP.Hà Nội
+                P.Kiến Hưng, TP.Hà Nội
               </p>
             </div>
             <a
