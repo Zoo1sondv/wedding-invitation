@@ -102,7 +102,6 @@ $shadow-text: 2px 2px 4px rgba(0, 0, 0, 0.5);
         position: absolute;
         z-index: -1;
         left: 50%;
-        bottom: clamp(-6px, -1vw, -10px);
         transform: translateX(-50%);
         font-size: clamp(3.5rem, 7vw, 6rem);
         animation: heartbeat 1.5s ease-in-out infinite;
@@ -197,7 +196,6 @@ $shadow-text: 2px 2px 4px rgba(0, 0, 0, 0.5);
 
         .heart {
           font-size: 3.2rem;
-          bottom: -5px;
         }
       }
     }
@@ -218,8 +216,74 @@ $shadow-text: 2px 2px 4px rgba(0, 0, 0, 0.5);
   }
 }
 
-// Desktop enhancements
+// Laptop enhancements (1366x768)
 @include min-lg {
+  .calendar {
+    margin-top: 50px;
+    padding: 50px 0;
+
+    &__content {
+      max-width: 900px;
+      padding: 40px 30px;
+      transform: scale(0.75);
+    }
+
+    &__month {
+      font-size: $h1-laptop;
+      margin-bottom: 35px;
+    }
+
+    &__weekdays {
+      gap: 10px;
+      margin-bottom: 15px;
+
+      div {
+        font-size: 1.2rem;
+        letter-spacing: 1px;
+      }
+    }
+
+    &__grid {
+      gap: 10px;
+
+      div {
+        font-size: 1.4rem;
+
+        &:not(.empty):hover {
+          transform: scale(1.05);
+          background: rgba(255, 255, 255, 0.2);
+        }
+      }
+
+      .intimate_party_day,
+      .wedding_day {
+        font-size: 1.6rem;
+
+        .heart {
+          font-size: 4rem;
+        }
+      }
+    }
+
+    &__legend {
+      margin-top: 40px;
+      padding: 15px 25px;
+      gap: 15px;
+
+      .legend_item {
+        font-size: 1.3rem;
+      }
+
+      .legend_heart_light,
+      .legend_heart_deep {
+        font-size: 2.2rem;
+      }
+    }
+  }
+}
+
+// Large desktop
+@include min-xxl {
   .calendar {
     margin-top: 70px;
     padding: 70px 0;
@@ -230,7 +294,7 @@ $shadow-text: 2px 2px 4px rgba(0, 0, 0, 0.5);
     }
 
     &__month {
-      font-size: 5.5rem;
+      font-size: $h1-desktop;
       margin-bottom: 50px;
     }
 
@@ -262,7 +326,6 @@ $shadow-text: 2px 2px 4px rgba(0, 0, 0, 0.5);
 
         .heart {
           font-size: 6.5rem;
-          bottom: -12px;
         }
       }
     }
@@ -284,15 +347,15 @@ $shadow-text: 2px 2px 4px rgba(0, 0, 0, 0.5);
   }
 }
 
-// Extra large desktop
-@include min-xxl {
+// 4K screens
+@include min-4k {
   .calendar {
     &__content {
       max-width: 1200px;
     }
 
     &__month {
-      font-size: 6rem;
+      font-size: $h1-xxl;
     }
 
     &__grid {
@@ -306,7 +369,6 @@ $shadow-text: 2px 2px 4px rgba(0, 0, 0, 0.5);
 
         .heart {
           font-size: 7rem;
-          bottom: 12px;
         }
       }
     }

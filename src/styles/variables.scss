@@ -9,6 +9,7 @@ $breakpoint-xs: 375px; // iPhone SE, small phones
 $breakpoint-sm: 576px; // Large phones
 $breakpoint-md: 768px; // Tablets
 $breakpoint-lg: 992px; // Small laptops
+$breakpoint-laptop: 1366px; // HD Laptops (1366x768)
 $breakpoint-xl: 1200px; // Desktops
 $breakpoint-xxl: 1400px; // Large desktops
 $breakpoint-4k: 1920px; // 4K screens
@@ -38,6 +39,12 @@ $breakpoint-4k: 1920px; // 4K screens
 
 @mixin min-lg {
   @media (min-width: #{$breakpoint-lg}) {
+    @content;
+  }
+}
+
+@mixin min-laptop {
+  @media (min-width: #{$breakpoint-laptop}) {
     @content;
   }
 }
@@ -81,6 +88,12 @@ $breakpoint-4k: 1920px; // 4K screens
 
 @mixin max-lg {
   @media (max-width: #{$breakpoint-lg - 1}) {
+    @content;
+  }
+}
+
+@mixin max-laptop {
+  @media (max-width: #{$breakpoint-laptop - 1}) {
     @content;
   }
 }
@@ -183,34 +196,40 @@ $container-xxl: 1320px;
 
 // Heading sizes for different breakpoints
 // H1 - Main titles (Hero, Section titles)
-$h1-mobile: 4rem; // ~56px
-$h1-desktop: 8rem; // ~112px
-$h1-xxl: 12rem; // ~176px
+$h1-mobile: 4rem; // ~64px mobile
+$h1-laptop: 5rem; // ~80px for 1366x768
+$h1-desktop: 8rem; // ~128px desktop
+$h1-xxl: 12rem; // ~192px large screens
 
 // H2 - Secondary titles
-$h2-mobile: 3.5rem; // ~40px
-$h2-desktop: 6rem; // ~80px
-$h2-xxl: 7rem; // ~96px
+$h2-mobile: 3.5rem; // ~56px mobile
+$h2-laptop: 4rem; // ~64px for 1366x768
+$h2-desktop: 6rem; // ~96px desktop
+$h2-xxl: 7rem; // ~112px large screens
 
 // H3 - Sub-headings
-$h3-mobile: 3rem; // ~29px
-$h3-desktop: 3.5rem; // ~56px
-$h3-xxl: 4rem; // ~64px
+$h3-mobile: 3rem; // ~48px mobile
+$h3-laptop: 2.5rem; // ~40px for 1366x768
+$h3-desktop: 3.5rem; // ~56px desktop
+$h3-xxl: 4rem; // ~64px large screens
 
 // Body text
-$body-mobile: 1rem; // ~16px
-$body-desktop: 1.4rem; // ~22px
-$body-xxl: 2.6rem; // ~26px
+$body-mobile: 1rem; // ~16px mobile
+$body-laptop: 1.1rem; // ~17.6px for 1366x768
+$body-desktop: 1.4rem; // ~22px desktop
+$body-xxl: 2.6rem; // ~41px large screens
 
 // Small text
-$small-mobile: 1.3rem; // ~14px
-$small-desktop: 2rem; // ~19px
-$small-xxl: 2.5rem; // ~21px
+$small-mobile: 1.3rem; // ~20.8px mobile
+$small-laptop: 1.5rem; // ~24px for 1366x768
+$small-desktop: 2rem; // ~32px desktop
+$small-xxl: 2.5rem; // ~40px large screens
 
 // Large text (paragraphs in hero, ceremony)
-$large-mobile: 2rem; // ~24px
-$large-desktop: 3rem; // ~40px
-$large-xxl: 4rem; // ~48px
+$large-mobile: 2rem; // ~32px mobile
+$large-laptop: 2.2rem; // ~35px for 1366x768
+$large-desktop: 3rem; // ~48px desktop
+$large-xxl: 4rem; // ~64px large screens
 
 // ==========================================
 // 🎨 COLORS (existing)

@@ -113,8 +113,40 @@
   }
 }
 
-// Desktop enhancements
+// Laptop enhancements (1366x768)
 @include min-lg {
+  .thankYouSection {
+    padding: 80px 0;
+
+    &__content {
+      max-width: 800px;
+    }
+
+    &__title {
+      font-size: $h1-laptop;
+      letter-spacing: 3px;
+      margin-bottom: 30px;
+    }
+
+    &__text {
+      padding: 40px;
+
+      p {
+        font-size: $body-laptop;
+        line-height: 1.8;
+        margin-bottom: 25px;
+      }
+    }
+
+    &__signature {
+      font-size: $large-laptop;
+      margin-top: 20px;
+    }
+  }
+}
+
+// Large desktop
+@include min-xxl {
   .thankYouSection {
     padding: 100px 0;
 
@@ -145,8 +177,8 @@
   }
 }
 
-// Extra large desktop
-@include min-xxl {
+// 4K screens
+@include min-4k {
   .thankYouSection {
     &__content {
       max-width: 1200px;

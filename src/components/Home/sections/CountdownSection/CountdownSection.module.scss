@@ -164,11 +164,42 @@
   }
 }
 
-// Desktop enhancements
+// Laptop enhancements (1366x768)
 @include min-lg {
   .countdownSection {
-    padding: 400px 0;
+    padding: 250px 0;
     background-position: center 30%;
+
+    &__content {
+      max-width: 1200px;
+    }
+
+    &__header {
+      h2 {
+        font-size: $h2-laptop;
+        letter-spacing: 2px;
+      }
+    }
+
+    &__timer,
+    &__timer_row2 {
+      gap: 20px;
+    }
+
+    &__timeUnit {
+      min-width: 100px;
+
+      &_days {
+        min-width: 150px;
+      }
+    }
+  }
+}
+
+// Large desktop
+@include min-xxl {
+  .countdownSection {
+    padding: 350px 0;
 
     &__content {
       max-width: 1400px;
@@ -176,7 +207,7 @@
 
     &__header {
       h2 {
-        font-size: 5.5rem;
+        font-size: $h2-desktop;
         letter-spacing: 3px;
       }
     }
@@ -196,11 +227,14 @@
   }
 }
 
-@include min-xxl {
+// 4K screens
+@include min-4k {
   .countdownSection {
+    padding: 400px 0;
+
     &__header {
       h2 {
-        font-size: 6rem;
+        font-size: $h2-xxl;
       }
     }
 

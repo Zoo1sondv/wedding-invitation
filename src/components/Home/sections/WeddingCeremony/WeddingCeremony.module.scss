@@ -194,10 +194,63 @@
   }
 }
 
-// Desktop enhancements
+// Desktop enhancements (1366x768)
 @include min-lg {
   .ceremony {
+    padding: 50px 30px;
+
+    &__content {
+      max-width: 1000px;
+    }
+
+    &__item {
+      padding: 35px 25px;
+      gap: 15px;
+
+      h1 {
+        font-size: $h2-laptop;
+        letter-spacing: 6px;
+        margin-bottom: 12px;
+      }
+
+      h3 {
+        font-size: $h3-laptop;
+      }
+
+      p {
+        font-size: $body-laptop;
+      }
+    }
+
+    &__date {
+      gap: 18px;
+
+      h3 {
+        font-size: 1.8rem;
+
+        &:nth-child(3) {
+          font-size: 4.5rem;
+        }
+      }
+    }
+
+    &__slash {
+      height: 60px;
+    }
+  }
+
+  .decorative__divider {
+    max-width: 350px;
+    height: 45px;
+    margin: 35px auto;
+  }
+}
+
+// Large desktop
+@include min-xxl {
+  .ceremony {
     padding: 70px 40px;
+    background-position: center 30%;
 
     &__content {
       max-width: 1200px;
@@ -246,11 +299,10 @@
   }
 }
 
-// Large desktop
-@include min-xxl {
+// Extra large desktop
+@include min-4k {
   .ceremony {
     padding: 90px 50px;
-    background-position: center 30%;
 
     &__item {
       h1 {

@@ -38,8 +38,27 @@
   }
 }
 
-// Desktop enhancements
+// Laptop enhancements (1366x768)
 @include min-lg {
+  .albumPreview {
+    padding: 0 30px;
+
+    &__text {
+      font-size: 1.2rem;
+      margin: 20px 15px;
+      line-height: 1.7;
+    }
+
+    &__image {
+      img {
+        border-radius: 8px;
+      }
+    }
+  }
+}
+
+// Large desktop
+@include min-xxl {
   .albumPreview {
     padding: 0 40px;
 
@@ -57,7 +76,8 @@
   }
 }
 
-@include min-xxl {
+// 4K screens
+@include min-4k {
   .albumPreview {
     &__text {
       max-width: 1400px;

@@ -23,8 +23,23 @@
   }
 }
 
-// Desktop enhancements
+// Laptop enhancements (1366x768)
 @include min-lg {
+  .information {
+    margin-top: 40px;
+    gap: 50px;
+    padding: 0 30px;
+
+    &__content {
+      font-size: $body-laptop;
+      line-height: 1.7;
+      margin: 0 20px;
+    }
+  }
+}
+
+// Large desktop
+@include min-xxl {
   .information {
     margin-top: 60px;
     gap: 80px;
@@ -38,7 +53,8 @@
   }
 }
 
-@include min-xxl {
+// 4K screens
+@include min-4k {
   .information {
     &__content {
       max-width: 1400px;

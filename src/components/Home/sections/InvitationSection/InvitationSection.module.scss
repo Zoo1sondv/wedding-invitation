@@ -8,7 +8,7 @@ $border-radius: 4px;
   width: 100%;
   min-height: 500px;
   background-size: cover;
-  background-position: center center;
+  background-position: center 10%;
   background-repeat: no-repeat;
   box-shadow: $shadow-box;
   border-radius: $border-radius;
@@ -109,8 +109,57 @@ $border-radius: 4px;
   }
 }
 
-// Desktop optimization
+// Laptop optimization (1366x768)
 @include min-lg {
+  .invitation {
+    padding: 0 40px;
+
+    &__content {
+      h1 {
+        font-size: $h3-laptop;
+      }
+
+      h3 {
+        font-size: $body-laptop;
+      }
+    }
+
+    &__images {
+      gap: 20px;
+      padding: 0 15px;
+    }
+  }
+
+  .person {
+    &__name {
+      font-size: $h3-laptop;
+    }
+
+    &__image {
+      min-height: 500px;
+      max-height: 600px;
+    }
+
+    &__bride {
+      .person__image {
+        background-position: center 65%;
+      }
+    }
+  }
+}
+
+// Mobile optimization
+@include max-md {
+  .person {
+    &__image {
+      min-height: 275px;
+      max-height: 500px;
+    }
+  }
+}
+
+// Large desktop
+@include min-xxl {
   .invitation {
     padding: 0 60px;
 
@@ -142,17 +191,8 @@ $border-radius: 4px;
   }
 }
 
-// Mobile optimization
-@include max-md {
-  .person {
-    &__image {
-      min-height: 275px;
-      max-height: 500px;
-    }
-  }
-}
-
-@include min-xxl {
+// 4K screens
+@include min-4k {
   .invitation {
     &__content {
       h1 {
