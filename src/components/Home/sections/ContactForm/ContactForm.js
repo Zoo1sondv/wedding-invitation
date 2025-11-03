@@ -139,7 +139,7 @@ const ContactForm = ({ sectionRef, showSection }) => {
               Xác Nhận Tham Dự
             </h2>
             <p>
-              Hãy xác nhận sự có mặt của bạn trước ngày 05.11.2025 để chúng mình
+              Hãy xác nhận sự có mặt của bạn trước ngày 04.11.2025 để chúng mình
               chuẩn bị đón tiếp một cách chu đáo nhất.
               <br />
               Trân trọng!
